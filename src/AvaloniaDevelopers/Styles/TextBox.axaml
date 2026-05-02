@@ -1,0 +1,50 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- TextBox Style -->
+    <Style Selector="TextBox">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
+        <Setter Property="Padding" Value="6" />
+        <Setter Property="CornerRadius" Value="{DynamicResource WD.CornerRadius}" />
+        <Setter Property="MinHeight" Value="{DynamicResource WD.Height}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Name="border"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                    <Grid>
+                        <TextPresenter Name="PART_TextPresenter"
+                                       Margin="{TemplateBinding Padding}"
+                                       VerticalAlignment="Center"
+                                       CaretBrush="{Binding $parent[TextBox].Foreground}"
+                                       SelectionBrush="{Binding $parent[TextBox].SelectionBrush}"
+                                       SelectionForegroundBrush="{Binding $parent[TextBox].SelectionForegroundBrush}" />
+                        <TextBlock Name="PART_Watermark"
+                                   Margin="{TemplateBinding Padding}"
+                                   VerticalAlignment="Center"
+                                   Foreground="{DynamicResource WD.PlaceholderTextBrush}"
+                                   Text="{TemplateBinding Watermark}" />
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^ /template/ TextBlock#PART_Watermark">
+            <Setter Property="IsVisible" Value="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.StringIsEmptyConverter}}" />
+        </Style>
+        <Style Selector="^:focus /template/ Border#border">
+            <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
+        </Style>
+        <Style Selector="^:pointerover /template/ Border#border">
+            <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
+        </Style>
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="{DynamicResource WD.EnabledOpacity}" />
+        </Style>
+    </Style>
+
+</Styles>
