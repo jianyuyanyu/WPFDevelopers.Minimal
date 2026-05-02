@@ -1,0 +1,59 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Expander Style -->
+    <Style Selector="Expander">
+        <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{DynamicResource WD.CornerRadius}">
+                    <DockPanel>
+                        <ToggleButton Name="toggle"
+                                      DockPanel.Dock="Top"
+                                      Background="Transparent"
+                                      BorderThickness="0"
+                                      Padding="6"
+                                      Content="{TemplateBinding Header}"
+                                      IsChecked="{TemplateBinding IsExpanded, Mode=TwoWay}">
+                            <ToggleButton.Template>
+                                <ControlTemplate>
+                                    <Border Name="border"
+                                            Background="{TemplateBinding Background}"
+                                            Padding="{TemplateBinding Padding}">
+                                        <DockPanel>
+                                            <Path Name="arrow"
+                                                  DockPanel.Dock="Left"
+                                                  Width="12" Height="12"
+                                                  Margin="0,0,6,0"
+                                                  VerticalAlignment="Center"
+                                                  Fill="{DynamicResource WD.RegularTextBrush}"
+                                                  Data="{StaticResource WD.ChevronRightGeometry}" />
+                                            <ContentPresenter Name="content"
+                                                              VerticalAlignment="Center"
+                                                              Content="{TemplateBinding Content}" />
+                                        </DockPanel>
+                                    </Border>
+                                </ControlTemplate>
+                            </ToggleButton.Template>
+                        </ToggleButton>
+                        <ContentPresenter Name="PART_ContentPresenter"
+                                          DockPanel.Dock="Bottom"
+                                          IsVisible="{TemplateBinding IsExpanded}"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}" />
+                    </DockPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:expanded /template/ Path#arrow">
+            <Setter Property="Data" Value="{StaticResource WD.ChevronDownGeometry}" />
+        </Style>
+    </Style>
+
+</Styles>
