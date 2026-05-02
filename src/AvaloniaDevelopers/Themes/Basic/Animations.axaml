@@ -1,0 +1,8 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--
+        Avalonia easing functions are used in Animation elements.
+        Key easing types available: CubicEaseInOut, QuadraticEaseInOut, etc.
+        These are referenced by key in animation definitions.
+    -->
+</ResourceDictionary>
