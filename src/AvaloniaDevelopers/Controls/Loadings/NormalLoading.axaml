@@ -1,0 +1,31 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:AvaloniaDevelopers.Controls">
+
+    <ControlTheme x:Key="{x:Type controls:NormalLoading}" TargetType="controls:NormalLoading">
+        <Setter Property="Width" Value="40" />
+        <Setter Property="Height" Value="40" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid Width="40" Height="40">
+                    <Ellipse Name="dot1"
+                             Width="10" Height="10"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Center"
+                             Fill="{DynamicResource WD.PrimaryBrush}" />
+                    <Ellipse Name="dot2"
+                             Width="10" Height="10"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             Fill="{DynamicResource WD.PrimaryBrush}" />
+                    <Ellipse Name="dot3"
+                             Width="10" Height="10"
+                             HorizontalAlignment="Right"
+                             VerticalAlignment="Center"
+                             Fill="{DynamicResource WD.PrimaryBrush}" />
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+</ResourceDictionary>
