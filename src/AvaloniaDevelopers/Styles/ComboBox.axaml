@@ -1,0 +1,88 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- ComboBox Style -->
+    <Style Selector="ComboBox">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
+        <Setter Property="Padding" Value="6" />
+        <Setter Property="CornerRadius" Value="{DynamicResource WD.CornerRadius}" />
+        <Setter Property="MinHeight" Value="{DynamicResource WD.Height}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid>
+                    <Border Name="border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                        <DockPanel>
+                            <Path Name="Arrow"
+                                  DockPanel.Dock="Right"
+                                  Width="12" Height="12"
+                                  Margin="0,0,6,0"
+                                  VerticalAlignment="Center"
+                                  Fill="{DynamicResource WD.RegularTextBrush}"
+                                  Data="{StaticResource WD.ChevronDownGeometry}" />
+                            <ContentPresenter Name="PART_ContentPresenter"
+                                              Margin="{TemplateBinding Padding}"
+                                              VerticalAlignment="Center"
+                                              Content="{TemplateBinding SelectionBoxItem}"
+                                              ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" />
+                        </DockPanel>
+                    </Border>
+                    <Popup Name="PART_Popup"
+                           Placement="Bottom"
+                           MinWidth="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}">
+                        <Border Name="dropDownBorder"
+                                Background="{DynamicResource WD.PopupBackgroundBrush}"
+                                BorderBrush="{DynamicResource WD.BaseBrush}"
+                                BorderThickness="1"
+                                CornerRadius="4"
+                                BoxShadow="0 2 8 2 #10000000">
+                            <ScrollViewer MaxHeight="300" HorizontalScrollBarVisibility="Auto">
+                                <ItemsPresenter Name="PART_ItemsPresenter" ItemsPanel="{TemplateBinding ItemsPanel}" />
+                            </ScrollViewer>
+                        </Border>
+                    </Popup>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:focus /template/ Border#border">
+            <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
+        </Style>
+        <Style Selector="^:pointerover /template/ Border#border">
+            <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
+        </Style>
+    </Style>
+
+    <!-- ComboBoxItem Style -->
+    <Style Selector="ComboBoxItem">
+        <Setter Property="Padding" Value="6,4" />
+        <Setter Property="MinHeight" Value="30" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Name="border"
+                        Background="{TemplateBinding Background}"
+                        Padding="{TemplateBinding Padding}">
+                    <ContentPresenter Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover /template/ Border#border">
+            <Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
+        </Style>
+        <Style Selector="^:selected /template/ Border#border">
+            <Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
+        </Style>
+        <Style Selector="^:selected:pointerover /template/ Border#border">
+            <Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
+        </Style>
+    </Style>
+
+</Styles>
