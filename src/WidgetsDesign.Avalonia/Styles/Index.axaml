@@ -1,0 +1,29 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:WidgetsDesign.Avalonia.Controls">
+    <StyleInclude Source="/Styles/Buttons.axaml" />
+    <StyleInclude Source="/Styles/CheckBox.axaml" />
+    <StyleInclude Source="/Styles/ComboBox.axaml" />
+    <StyleInclude Source="/Styles/DataGrid.axaml" />
+    <StyleInclude Source="/Styles/DatePicker.axaml" />
+    <StyleInclude Source="/Styles/Expander.axaml" />
+    <StyleInclude Source="/Styles/Label.axaml" />
+    <StyleInclude Source="/Styles/ListBox.axaml" />
+    <StyleInclude Source="/Styles/Menu.axaml" />
+    <StyleInclude Source="/Styles/ProgressBar.axaml" />
+    <StyleInclude Source="/Styles/RadioButton.axaml" />
+    <StyleInclude Source="/Styles/Slider.axaml" />
+    <StyleInclude Source="/Styles/TabControl.axaml" />
+    <StyleInclude Source="/Styles/TextBox.axaml" />
+    <StyleInclude Source="/Styles/ToggleButton.axaml" />
+    <StyleInclude Source="/Styles/TreeView.axaml" />
+    <StyleInclude Source="/Controls/Tag/Tag.axaml" />
+
+    <!-- Badge dot mode: hide text badge, show dot -->
+    <Style Selector="controls|BadgeControl:dot /template/ Border#PART_Badge">
+        <Setter Property="IsVisible" Value="False" />
+    </Style>
+    <Style Selector="controls|BadgeControl:dot /template/ Ellipse#PART_Dot">
+        <Setter Property="IsVisible" Value="True" />
+    </Style>
+</Styles>

@@ -1,0 +1,39 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Global: disable auto-hide for ALL scrollbars -->
+    <Style Selector="ScrollBar">
+        <Setter Property="AllowAutoHide" Value="False" />
+        <Setter Property="Width" Value="14" />
+        <Setter Property="MinWidth" Value="14" />
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+
+    <Style Selector="ScrollBar:horizontal">
+        <Setter Property="Height" Value="14" />
+        <Setter Property="MinHeight" Value="14" />
+    </Style>
+
+    <!-- ScrollBar Thumb -->
+    <Style Selector="ScrollBar /template/ Thumb">
+        <Setter Property="Background" Value="{DynamicResource WD.BaseBrush}" />
+        <Setter Property="MinWidth" Value="14" />
+        <Setter Property="MinHeight" Value="40" />
+        <Setter Property="CornerRadius" Value="7" />
+    </Style>
+
+    <Style Selector="ScrollBar:pointerover /template/ Thumb">
+        <Setter Property="Background" Value="{DynamicResource WD.LightBrush}" />
+    </Style>
+
+    <Style Selector="ScrollBar:pressed /template/ Thumb">
+        <Setter Property="Background" Value="{DynamicResource WD.PrimaryBrush}" />
+    </Style>
+
+    <!-- ScrollViewer -->
+    <Style Selector="ScrollViewer">
+        <Setter Property="HorizontalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+    </Style>
+
+</Styles>

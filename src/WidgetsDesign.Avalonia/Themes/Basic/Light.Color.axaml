@@ -1,0 +1,37 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Light Theme Colors -->
+    <Color x:Key="WD.PrimaryTextColor">#303133</Color>
+    <SolidColorBrush x:Key="WD.PrimaryTextBrush" Color="{StaticResource WD.PrimaryTextColor}" />
+
+    <Color x:Key="WD.RegularTextColor">#606266</Color>
+    <SolidColorBrush x:Key="WD.RegularTextBrush" Color="{StaticResource WD.RegularTextColor}" />
+
+    <Color x:Key="WD.BackgroundColor">#FFFFFF</Color>
+    <SolidColorBrush x:Key="WD.BackgroundBrush" Color="{StaticResource WD.BackgroundColor}" />
+
+    <Color x:Key="WD.WindowBorderColor">#409EFF</Color>
+    <SolidColorBrush x:Key="WD.WindowBorderBrush" Color="{StaticResource WD.WindowBorderColor}" />
+
+    <SolidColorBrush x:Key="WD.WindowTextBrush" Color="{StaticResource WD.BackgroundColor}" />
+
+    <Color x:Key="WD.BaseColor">#DCDFE6</Color>
+    <SolidColorBrush x:Key="WD.BaseBrush" Color="{StaticResource WD.BaseColor}" />
+
+    <Color x:Key="WD.BaseMoveColor">#F5F7FA</Color>
+    <SolidColorBrush x:Key="WD.BaseMoveBrush" Color="{StaticResource WD.BaseMoveColor}" />
+
+    <Color x:Key="WD.LighterColor">#EBEEF5</Color>
+    <SolidColorBrush x:Key="WD.LighterBrush" Color="{StaticResource WD.LighterColor}" />
+
+    <Color x:Key="WD.LightColor">#E4E7ED</Color>
+    <SolidColorBrush x:Key="WD.LightBrush" Color="{StaticResource WD.LightColor}" />
+
+    <Color x:Key="WD.ChartXAxisColor">#E0E6F1</Color>
+    <SolidColorBrush x:Key="WD.ChartXAxisBrush" Color="{StaticResource WD.ChartXAxisColor}" />
+
+    <Color x:Key="WD.ChartFillColor">#6E7079</Color>
+    <SolidColorBrush x:Key="WD.ChartFillBrush" Color="{StaticResource WD.ChartFillColor}" />
+
+</ResourceDictionary>

@@ -1,0 +1,43 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:WidgetsDesign.Avalonia.Controls">
+
+    <ControlTheme x:Key="{x:Type controls:BadgeControl}" TargetType="controls:BadgeControl">
+        <Setter Property="BadgeBackground" Value="{DynamicResource WD.DangerBrush}" />
+        <Setter Property="BadgeForeground" Value="White" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid>
+                    <ContentPresenter Name="PART_Content"
+                                      Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      HorizontalAlignment="Left"
+                                      VerticalAlignment="Top"
+                                      Margin="0,8,8,0" />
+                    <Border Name="PART_Badge"
+                            Background="{TemplateBinding BadgeBackground}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            MinWidth="16"
+                            Padding="4,0,4,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Margin="0,0,0,0">
+                        <TextBlock Text="{TemplateBinding Text}"
+                                   Foreground="{TemplateBinding BadgeForeground}"
+                                   FontSize="{TemplateBinding BadgeFontSize}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
+                    </Border>
+                    <Ellipse Name="PART_Dot"
+                             Width="8" Height="8"
+                             Fill="{TemplateBinding BadgeBackground}"
+                             HorizontalAlignment="Right"
+                             VerticalAlignment="Top"
+                             Margin="4,4,4,4"
+                             IsVisible="False" />
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+</ResourceDictionary>
