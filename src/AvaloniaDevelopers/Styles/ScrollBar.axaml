@@ -1,0 +1,55 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- ScrollBar Style -->
+    <Style Selector="ScrollBar">
+        <Setter Property="Width" Value="8" />
+        <Setter Property="MinWidth" Value="8" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Name="bg"
+                        Background="{TemplateBinding Background}"
+                        Opacity="0">
+                    <Track Name="PART_Track"
+                           Orientation="{TemplateBinding Orientation}">
+                        <Track.DecreaseButton>
+                            <RepeatButton Name="PART_LineUpButton" />
+                        </Track.DecreaseButton>
+                        <Track.IncreaseButton>
+                            <RepeatButton Name="PART_PageDownButton" />
+                        </Track.IncreaseButton>
+                        <Track.Thumb>
+                            <Thumb Name="thumb"
+                                   MinWidth="8"
+                                   Background="{DynamicResource WD.BaseBrush}"
+                                   CornerRadius="4" />
+                        </Track.Thumb>
+                    </Track>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover /template/ Border#bg">
+            <Setter Property="Opacity" Value="1" />
+        </Style>
+        <Style Selector="^ /template/ Thumb#thumb:pointerover">
+            <Setter Property="Background" Value="{DynamicResource WD.LightBrush}" />
+        </Style>
+        <Style Selector="^ /template/ Thumb#thumb:pressed">
+            <Setter Property="Background" Value="{DynamicResource WD.PrimaryBrush}" />
+        </Style>
+    </Style>
+
+    <!-- Horizontal ScrollBar -->
+    <Style Selector="ScrollBar:horizontal">
+        <Setter Property="Height" Value="8" />
+        <Setter Property="MinHeight" Value="8" />
+    </Style>
+
+    <!-- ScrollViewer Style -->
+    <Style Selector="ScrollViewer">
+        <Setter Property="HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+    </Style>
+
+</Styles>
