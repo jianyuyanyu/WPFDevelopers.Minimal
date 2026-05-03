@@ -12,6 +12,7 @@
     <StyleInclude Source="/Styles/Menu.axaml" />
     <StyleInclude Source="/Styles/ProgressBar.axaml" />
     <StyleInclude Source="/Styles/RadioButton.axaml" />
+    <StyleInclude Source="/Styles/ScrollBar.axaml" />
     <StyleInclude Source="/Styles/Slider.axaml" />
     <StyleInclude Source="/Styles/TabControl.axaml" />
     <StyleInclude Source="/Styles/TextBox.axaml" />
