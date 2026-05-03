@@ -10,16 +10,109 @@
         <Setter Property="Padding" Value="6" />
         <Setter Property="CornerRadius" Value="{DynamicResource WD.CornerRadius}" />
         <Setter Property="MinHeight" Value="{DynamicResource WD.Height}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="CaretBrush" Value="{DynamicResource WD.PrimaryBrush}" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource WD.WindowBorderBrush}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Name="border"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                    <Grid>
+                        <!-- Watermark: shown when text is empty -->
+                        <TextBlock Name="PART_Watermark"
+                                   Margin="{TemplateBinding Padding}"
+                                   VerticalAlignment="Center"
+                                   Foreground="{DynamicResource WD.PlaceholderTextBrush}"
+                                   Text="{TemplateBinding Watermark}"
+                                   TextTrimming="CharacterEllipsis" />
+                        <!-- ScrollViewer for overflow -->
+                        <ScrollViewer Name="PART_ContentHost"
+                                      HorizontalScrollBarVisibility="Hidden"
+                                      VerticalScrollBarVisibility="Hidden">
+                            <Panel>
+                                <!-- TextPresenter: must bind Text for edit sync -->
+                                <TextPresenter Name="PART_TextPresenter"
+                                               Margin="{TemplateBinding Padding}"
+                                               VerticalAlignment="Center"
+                                               CaretBrush="{TemplateBinding CaretBrush}"
+                                               SelectionBrush="{TemplateBinding SelectionBrush}"
+                                               SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+                                               Text="{TemplateBinding Text, Mode=TwoWay}"
+                                               PasswordChar="{TemplateBinding PasswordChar}"
+                                               RevealPassword="{TemplateBinding RevealPassword}" />
+                            </Panel>
+                        </ScrollViewer>
+                        <!-- Reveal toggle button: shown when PasswordChar is set -->
+                        <ToggleButton Name="PART_RevealButton"
+                                      Width="20" Height="20"
+                                      Margin="0,0,4,0"
+                                      HorizontalAlignment="Right"
+                                      VerticalAlignment="Center"
+                                      Background="Transparent"
+                                      BorderThickness="0"
+                                      Padding="0"
+                                      IsVisible="False"
+                                      IsChecked="{Binding RevealPassword, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+                            <Panel>
+                                <!-- Eye icon (password hidden) -->
+                                <Path Name="PART_EyeIcon"
+                                      Width="14" Height="10"
+                                      Stroke="{DynamicResource WD.RegularTextBrush}"
+                                      StrokeThickness="1.5"
+                                      Stretch="Uniform"
+                                      Fill="Transparent"
+                                      Data="M 1,5 Q 7,0 13,5 Q 7,10 1,5 M 7,3.5 A 1.5,1.5 0 1,0 7,6.5 A 1.5,1.5 0 1,0 7,3.5" />
+                                <!-- Eye-off icon (password revealed) -->
+                                <Path Name="PART_EyeOffIcon"
+                                      Width="14" Height="10"
+                                      Stroke="{DynamicResource WD.RegularTextBrush}"
+                                      StrokeThickness="1.5"
+                                      Stretch="Uniform"
+                                      Fill="Transparent"
+                                      IsVisible="False"
+                                      Data="M 1,5 Q 7,0 13,5 M 3,3 L 11,7 M 7,3.5 A 1.5,1.5 0 1,0 7,6.5 A 1.5,1.5 0 1,0 7,3.5 M 2,2 L 12,8" />
+                            </Panel>
+                        </ToggleButton>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
     </Style>
 
-    <Style Selector="TextBox:focus /template/ Border#PART_BorderElement">
+    <!-- Watermark: hide when text has content -->
+    <Style Selector="TextBox /template/ TextBlock#PART_Watermark">
+        <Setter Property="IsVisible" Value="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.StringIsEmptyConverter}}" />
+    </Style>
+
+    <!-- Focus: blue border -->
+    <Style Selector="TextBox:focus /template/ Border#border">
         <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
     </Style>
-    <Style Selector="TextBox:pointerover /template/ Border#PART_BorderElement">
+
+    <!-- Pointer over: blue border -->
+    <Style Selector="TextBox:pointerover /template/ Border#border">
         <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
     </Style>
+
+    <!-- Disabled state -->
     <Style Selector="TextBox:disabled">
         <Setter Property="Opacity" Value="{DynamicResource WD.EnabledOpacity}" />
+    </Style>
+
+    <!-- Password mode: show reveal button when PasswordChar is set and text not empty -->
+    <Style Selector="TextBox:not(:empty) /template/ ToggleButton#PART_RevealButton">
+        <Setter Property="IsVisible" Value="{Binding PasswordChar, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.NullToVisibilityConverter_Inverse}}" />
+    </Style>
+
+    <!-- Password mode: toggle eye icons -->
+    <Style Selector="TextBox /template/ ToggleButton#PART_RevealButton:checked /template/ Path#PART_EyeIcon">
+        <Setter Property="IsVisible" Value="False" />
+    </Style>
+    <Style Selector="TextBox /template/ ToggleButton#PART_RevealButton:checked /template/ Path#PART_EyeOffIcon">
+        <Setter Property="IsVisible" Value="True" />
     </Style>
 
 </Styles>
