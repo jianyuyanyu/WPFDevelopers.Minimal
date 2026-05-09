@@ -1,0 +1,62 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- TreeView Style -->
+    <ControlTheme x:Key="{x:Type TreeView}" TargetType="TreeView">
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="{DynamicResource WD.CornerRadius}" />
+    </ControlTheme>
+
+    <!-- TreeViewItem Style -->
+    <ControlTheme x:Key="{x:Type TreeViewItem}" TargetType="TreeViewItem">
+        <Setter Property="Padding" Value="4,2" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <StackPanel>
+                    <Border Name="border"
+                            Background="{TemplateBinding Background}"
+                            Padding="{TemplateBinding Padding}"
+                            CornerRadius="4">
+                        <DockPanel>
+                            <ToggleButton Name="expander"
+                                          DockPanel.Dock="Left"
+                                          Background="Transparent"
+                                          BorderThickness="0"
+                                          IsChecked="{TemplateBinding IsExpanded, Mode=TwoWay}">
+                                <Path Name="arrow"
+                                      Width="12" Height="12"
+                                      Fill="{DynamicResource WD.RegularTextBrush}"
+                                      Data="{StaticResource WD.ChevronRightGeometry}" />
+                            </ToggleButton>
+                            <ContentPresenter Name="PART_Header"
+                                              Content="{TemplateBinding Header}"
+                                              ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                              VerticalAlignment="Center" />
+                        </DockPanel>
+                    </Border>
+                    <ItemsPresenter Name="PART_ItemsPresenter"
+                                    IsVisible="{TemplateBinding IsExpanded}"
+                                    Margin="16,0,0,0" />
+                </StackPanel>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:expanded">
+            <Style Selector="^ /template/ Path#arrow">
+                <Setter Property="Data" Value="{StaticResource WD.ChevronDownGeometry}" />
+            </Style>
+        </Style>
+        <Style Selector="^:pointerover">
+            <Style Selector="^ /template/ Border#border">
+                <Setter Property="Background" Value="{DynamicResource WD.BaseMoveBrush}" />
+            </Style>
+        </Style>
+        <Style Selector="^:selected">
+            <Style Selector="^ /template/ Border#border">
+                <Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
+            </Style>
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>
