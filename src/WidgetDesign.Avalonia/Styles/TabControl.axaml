@@ -1,0 +1,66 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- TabControl Style -->
+    <ControlTheme x:Key="{x:Type TabControl}" TargetType="TabControl">
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <DockPanel>
+                    <ItemsPresenter Name="PART_ItemsPresenter"
+                                    DockPanel.Dock="Top"
+                                    ItemsPanel="{TemplateBinding ItemsPanel}" />
+                    <Border Name="contentBorder"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="0,4,4,4">
+                        <ContentPresenter Name="PART_SelectedContentHost"
+                                          Margin="{TemplateBinding Padding}"
+                                          Content="{TemplateBinding SelectedContent}"
+                                          ContentTemplate="{TemplateBinding SelectedContentTemplate}" />
+                    </Border>
+                </DockPanel>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <!-- TabItem Style -->
+    <ControlTheme x:Key="{x:Type TabItem}" TargetType="TabItem">
+        <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextBrush}" />
+        <Setter Property="Padding" Value="12,6" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Name="border"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        BorderThickness="{DynamicResource WD.TabItemBorderThickness}"
+                        Padding="{TemplateBinding Padding}"
+                        CornerRadius="4,4,0,0">
+                    <ContentPresenter Name="PART_ContentPresenter"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Content="{TemplateBinding Header}"
+                                      ContentTemplate="{TemplateBinding HeaderTemplate}" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover">
+            <Style Selector="^ /template/ Border#border">
+                <Setter Property="Background" Value="{DynamicResource WD.BaseMoveBrush}" />
+            </Style>
+        </Style>
+        <Style Selector="^:selected">
+            <Style Selector="^ /template/ Border#border">
+                <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
+            </Style>
+            <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
+        </Style>
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="{DynamicResource WD.EnabledOpacity}" />
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>
