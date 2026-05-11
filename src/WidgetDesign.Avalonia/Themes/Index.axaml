@@ -11,6 +11,7 @@
         <ResourceInclude Source="/Styles/Buttons.axaml"/>
         <ResourceInclude Source="/Styles/DataGrid.axaml"/>
         <ResourceInclude Source="/Styles/Calendar.axaml"/>
+        <ResourceInclude Source="/Styles/CalendarDatePicker.axaml"/>
         <ResourceInclude Source="/Styles/DatePicker.axaml"/>
         <ResourceInclude Source="/Styles/Label.axaml"/>
         <ResourceInclude Source="/Styles/ListBox.axaml"/>
@@ -26,6 +27,7 @@
         <ResourceInclude Source="/Styles/Slider.axaml"/>
         <ResourceInclude Source="/Styles/PathIcon.axaml"/>
         <ResourceInclude Source="/Styles/ComboBox.axaml"/>
+        <ResourceInclude Source="/Styles/RepeatButton.axaml"/>
         <ResourceInclude Source="/Styles/Thumb.axaml"/>
         <ResourceInclude Source="/Styles/Window.axaml"/>
     </ResourceDictionary.MergedDictionaries>
