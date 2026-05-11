@@ -1,4 +1,4 @@
-<ResourceDictionary xmlns="https://github.com/avaloniaui"
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!-- Primary Button -->
@@ -8,7 +8,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
-        <Setter Property="Padding" Value="6" />
+        <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Foreground" Value="{DynamicResource WD.WindowTextBrush}" />
         <Setter Property="Background" Value="{DynamicResource WD.PrimaryBrush}" />
@@ -46,7 +46,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
-        <Setter Property="Padding" Value="6" />
+        <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextBrush}" />
@@ -79,35 +79,33 @@
         <Setter Property="Focusable" Value="False" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Padding" Value="6" />
-        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
+        <Setter Property="MinWidth" Value="24" />
+        <Setter Property="MinHeight" Value="24" />
         <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextBrush}" />
         <Setter Property="Template">
-            <ControlTemplate>
-                <Grid>
-                    <Border Name="PART_Border"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="4"
-                            Opacity=".4" />
-                    <ContentPresenter Margin="{TemplateBinding Padding}"
-                                      Content="{TemplateBinding Content}"
-                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+            <ControlTemplate TargetType="Button">
+                <Border Name="PART_Border"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="{DynamicResource WD.CornerRadius}">
+                    <ContentPresenter Name="PART_ContentPresenter"
+                                      Margin="{TemplateBinding Padding}"
                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
                                       Foreground="{TemplateBinding Foreground}" />
-                </Grid>
+                </Border>
             </ControlTemplate>
         </Setter>
-        <Style Selector="^:pointerover">
-            <Style Selector="^ /template/ Border#PART_Border">
-                <Setter Property="Background" Value="{DynamicResource WD.ButtonFocusVisualColor}" />
-            </Style>
-            <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextBrush}" />
-            <Setter Property="Background" Value="Transparent" />
+        <Style Selector="^:pointerover /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource WD.BaseMoveBrush}" />
+        </Style>
+        <Style Selector="^:pressed /template/ Border#PART_Border">
+            <Setter Property="Background" Value="{DynamicResource WD.LighterBrush}" />
         </Style>
     </ControlTheme>
 
@@ -116,7 +114,7 @@
         <Setter Property="Focusable" Value="False" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.SuccessBrush}" />
-        <Setter Property="Padding" Value="6" />
+        <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Foreground" Value="{DynamicResource WD.SuccessBrush}" />
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
@@ -147,7 +145,7 @@
     <ControlTheme x:Key="wd-success-filled" TargetType="Button">
         <Setter Property="Focusable" Value="False" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Padding" Value="6" />
+        <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="Background" Value="{DynamicResource WD.SuccessBrush}" />
@@ -177,7 +175,7 @@
         <Setter Property="Focusable" Value="False" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.WarningBrush}" />
-        <Setter Property="Padding" Value="6" />
+        <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Foreground" Value="{DynamicResource WD.WarningBrush}" />
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
@@ -208,7 +206,7 @@
     <ControlTheme x:Key="wd-warning-filled" TargetType="Button">
         <Setter Property="Focusable" Value="False" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Padding" Value="6" />
+        <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="Background" Value="{DynamicResource WD.WarningBrush}" />
@@ -238,7 +236,7 @@
         <Setter Property="Focusable" Value="False" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.DangerBrush}" />
-        <Setter Property="Padding" Value="6" />
+        <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Foreground" Value="{DynamicResource WD.DangerBrush}" />
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
@@ -269,7 +267,7 @@
     <ControlTheme x:Key="wd-danger-filled" TargetType="Button">
         <Setter Property="Focusable" Value="False" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Padding" Value="6" />
+        <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="Background" Value="{DynamicResource WD.DangerBrush}" />
@@ -298,7 +296,7 @@
     <ControlTheme x:Key="wd-info" TargetType="Button">
         <Setter Property="Focusable" Value="False" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Padding" Value="6" />
+        <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="Background" Value="{DynamicResource WD.RegularTextBrush}" />
@@ -326,7 +324,7 @@
     <!-- Path Button (icon-only) -->
     <ControlTheme x:Key="wd-path" TargetType="Button">
         <Setter Property="Focusable" Value="False" />
-        <Setter Property="Padding" Value="8" />
+        <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Cursor" Value="Hand" />
