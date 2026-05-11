@@ -11,18 +11,18 @@
         Width="800" Height="600">
     <ScrollViewer Margin="2">
         <StackPanel Spacing="20">
-           <!-- --><!-- Title --><!--
+             <!--Title--> 
             <TextBlock Text="WidgetDesign.Avalonia Demo"
                        FontSize="24" FontWeight="Bold"
                        HorizontalAlignment="Center" />
 
-            --><!-- Theme Toggle --><!--
+             <!--Theme Toggle--> 
             <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
                 <TextBlock Text="Theme:" VerticalAlignment="Center" />
                 <Button Name="ThemeToggle" Content="Switch to Dark" Theme="{StaticResource wd-primary}" />
-            </StackPanel>-->
+            </StackPanel>
 
-            <!-- Buttons Section -->
+             <!--Buttons Section--> 
             <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
                 <StackPanel Spacing="12">
                     <TextBlock Text="Buttons" FontSize="18" FontWeight="SemiBold" />
@@ -40,7 +40,7 @@
                 </StackPanel>
             </Border>
 
-            <!-- PathIcon Section -->
+             <!--PathIcon Section--> 
             <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
                 <StackPanel Spacing="12">
                     <TextBlock Text="Icons" FontSize="18" FontWeight="SemiBold" />
@@ -62,7 +62,7 @@
                 </StackPanel>
             </Border>
 
-            <!-- Inputs Section -->
+             <!--Inputs Section--> 
             <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
                 <StackPanel Spacing="12">
                     <TextBlock Text="Inputs" FontSize="18" FontWeight="SemiBold" />
@@ -87,7 +87,7 @@
                 </StackPanel>
             </Border>
 
-            <!-- Tag Section -->
+             <!--Tag Section--> 
             <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
                 <StackPanel Spacing="12">
                     <TextBlock Text="Tags" FontSize="18" FontWeight="SemiBold" />
@@ -98,11 +98,11 @@
                 </StackPanel>
             </Border>
 
-            <!-- Loading Section -->
-            <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
+             <!--Loading Section--> 
+           <!-- <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
                 <StackPanel Spacing="12">
                     <TextBlock Text="Loading Indicators" FontSize="18" FontWeight="SemiBold" />
-                    <!--<StackPanel Orientation="Horizontal" Spacing="32">
+                    <StackPanel Orientation="Horizontal" Spacing="32">
                     <StackPanel HorizontalAlignment="Center">
                     <controls:NormalLoading IsLoading="True" />
                     <TextBlock Text="Normal" HorizontalAlignment="Center" Margin="0,8,0,0" />
@@ -111,11 +111,11 @@
                     <controls:BallLoading IsLoading="True" />
                     <TextBlock Text="Ball" HorizontalAlignment="Center" Margin="0,8,0,0" />
                     </StackPanel>
-                    </StackPanel>-->
+                    </StackPanel>
                 </StackPanel>
-            </Border>
+            </Border>-->
 
-            <!-- Badge Section -->
+             <!--Badge Section--> 
             <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
                 <StackPanel Spacing="12">
                     <TextBlock Text="Badge" FontSize="18" FontWeight="SemiBold" />
@@ -133,7 +133,7 @@
                 </StackPanel>
             </Border>
 
-            <!-- Progress Section -->
+             <!--Progress Section--> 
             <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
                 <StackPanel Spacing="12">
                     <TextBlock Text="Progress &amp; Slider" FontSize="18" FontWeight="SemiBold" />
@@ -142,7 +142,7 @@
                 </StackPanel>
             </Border>
 
-            <!-- Expander Section -->
+             <!--Expander Section--> 
             <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
                 <StackPanel Spacing="12">
                     <TextBlock Text="Expander" FontSize="18" FontWeight="SemiBold" />
@@ -180,7 +180,7 @@
                 </StackPanel>
             </Border>
 
-            <!-- ComboBox Section -->
+             <!--ComboBox Section--> 
             <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
                 <StackPanel Spacing="12">
                     <TextBlock Text="ComboBox" FontSize="18" FontWeight="SemiBold" />
@@ -193,7 +193,7 @@
                 </StackPanel>
             </Border>
 
-            <!-- DataGrid Section -->
+             <!--DataGrid Section--> 
             <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
                 <StackPanel Spacing="12">
                     <TextBlock Text="DataGrid" FontSize="18" FontWeight="SemiBold" />
@@ -215,7 +215,8 @@
                     <TextBlock Text="DatePicker" FontSize="18" FontWeight="SemiBold" />
                     <StackPanel Orientation="Horizontal" Spacing="16">
                         <DatePicker Width="200" HorizontalAlignment="Left" />
-                        <Calendar Width="250" Height="200" />
+                        <Calendar />
+                        <CalendarDatePicker Width="200"/>
                     </StackPanel>
                 </StackPanel>
             </Border>
