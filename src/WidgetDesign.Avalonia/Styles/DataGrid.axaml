@@ -7,7 +7,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="Padding" Value="6,4" />
+        <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
         <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="Opacity" Value="1" />
@@ -41,7 +41,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="SeparatorBrush" Value="{DynamicResource WD.LightBrush}" />
-        <Setter Property="Padding" Value="6,4" />
+        <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
         <Setter Property="Template">
             <ControlTemplate TargetType="DataGridColumnHeader">
                 <Border Name="HeaderBorder"
