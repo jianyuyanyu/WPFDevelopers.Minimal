@@ -10,7 +10,6 @@ namespace WidgetDesign.Demo
         public override void Initialize()
         {
             AvaloniaXamlLoader.Load(this);
-            RequestedThemeVariant = ThemeVariant.Light;
         }
 
         public override void OnFrameworkInitializationCompleted()
