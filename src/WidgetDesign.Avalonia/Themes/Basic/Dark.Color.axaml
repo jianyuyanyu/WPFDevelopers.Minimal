@@ -33,4 +33,16 @@
     <Color x:Key="WD.ChartFillColor">#86849D</Color>
     <SolidColorBrush x:Key="WD.ChartFillBrush" Color="{StaticResource WD.ChartFillColor}" />
 
+    <Color x:Key="WD.PrimaryMouseOverColor">#1A3A5C</Color>
+    <SolidColorBrush x:Key="WD.PrimaryMouseOverBrush" Color="{StaticResource WD.PrimaryMouseOverColor}" />
+
+    <Color x:Key="WD.SuccessMouseOverColor">#1A3A2A</Color>
+    <SolidColorBrush x:Key="WD.SuccessMouseOverBrush" Color="{StaticResource WD.SuccessMouseOverColor}" />
+
+    <Color x:Key="WD.WarningMouseOverColor">#3A3020</Color>
+    <SolidColorBrush x:Key="WD.WarningMouseOverBrush" Color="{StaticResource WD.WarningMouseOverColor}" />
+
+    <Color x:Key="WD.DangerMouseOverColor">#3A2020</Color>
+    <SolidColorBrush x:Key="WD.DangerMouseOverBrush" Color="{StaticResource WD.DangerMouseOverColor}" />
+
 </ResourceDictionary>
