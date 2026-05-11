@@ -1,0 +1,86 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:WidgetDesign.Avalonia.Controls">
+
+    <ControlTheme x:Key="{x:Type CalendarDatePicker}" TargetType="CalendarDatePicker">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
+        <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource WD.CornerRadius}" />
+        <Setter Property="MinHeight" Value="32" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="IsTodayHighlighted" Value="True" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="CalendarDatePicker">
+                <DataValidationErrors>
+                    <Panel Name="LayoutRoot">
+                        <Border Name="PART_Border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding CornerRadius}" />
+                        <Grid ColumnDefinitions="*, Auto">
+                            <TextBox Name="PART_TextBox"
+                                     Grid.Column="0"
+                                     MinHeight="{TemplateBinding MinHeight}"
+                                     HorizontalAlignment="Stretch"
+                                     VerticalAlignment="Stretch"
+                                     Background="Transparent"
+                                     BorderThickness="0"
+                                     Foreground="{TemplateBinding Foreground}"
+                                     IsReadOnly="True"
+                                     Focusable="False" />
+                            <Button Name="PART_Button"
+                                    Grid.Column="1"
+                                    Margin="0,0,8,0"
+                                    Padding="4"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    Cursor="Hand"
+                                    Focusable="False"
+                                    Foreground="{TemplateBinding Foreground}">
+                                <PathIcon Width="16"
+                                          Height="16"
+                                          Data="{StaticResource WD.DatePickerGeometry}"
+                                          Foreground="{TemplateBinding Foreground}" />
+                            </Button>
+                        </Grid>
+                        <Popup Name="PART_Popup"
+                               InheritsTransform="True"
+                               IsLightDismissEnabled="True"
+                               Placement="BottomEdgeAlignedLeft"
+                               PlacementTarget="{TemplateBinding}"
+                               controls:PopupExtensions.ConstrainToScreen="True"
+                               WindowManagerAddShadowHint="False" 
+                               VerticalOffset="{DynamicResource WD.PopupVerticalOffset}">
+                            <Border Background="{DynamicResource WD.BackgroundBrush}"
+                                    BorderBrush="{DynamicResource WD.BaseBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="{DynamicResource WD.CornerRadius}"
+                                    BoxShadow="0 2 8 0 #0000001A">
+                                <Calendar Name="PART_Calendar"
+                                          BorderThickness="0"
+                                          DisplayDate="{TemplateBinding DisplayDate}"
+                                          DisplayDateEnd="{TemplateBinding DisplayDateEnd}"
+                                          DisplayDateStart="{TemplateBinding DisplayDateStart}"
+                                          FirstDayOfWeek="{TemplateBinding FirstDayOfWeek}"
+                                          IsTodayHighlighted="{TemplateBinding IsTodayHighlighted}"
+                                          SelectedDate="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SelectedDate, Mode=TwoWay}" />
+                            </Border>
+                        </Popup>
+                    </Panel>
+                </DataValidationErrors>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:pointerover /template/ Border#PART_Border">
+            <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
+        </Style>
+        <Style Selector="^:focus-within /template/ Border#PART_Border">
+            <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>
