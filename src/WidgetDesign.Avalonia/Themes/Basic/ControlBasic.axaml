@@ -21,6 +21,7 @@
 
     <x:Double x:Key="WD.PopupShadowDepth">8</x:Double>
     <x:Double x:Key="WD.Spacer">0.8</x:Double>
+    <x:Double x:Key="WD.PopupVerticalOffset">2</x:Double>
 
     <converts:BoolToVisibilityConverter x:Key="WD.Bool2VisibilityConverter" />
     <converts:FalseToVisibilityConverter x:Key="WD.FalseToVisibilityConverter" />
