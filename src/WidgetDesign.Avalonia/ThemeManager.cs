@@ -1,8 +1,7 @@
-using System;
+﻿using System;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using Avalonia.Markup.Xaml.Styling;
 using Avalonia.Media;
 using Avalonia.Styling;
 
@@ -53,89 +52,76 @@ namespace WidgetDesign.Avalonia
         public IBrush? BackgroundBrush => GetResource<IBrush>("WD.BackgroundBrush");
         public IBrush? PrimaryTextBrush => GetResource<IBrush>("WD.PrimaryTextBrush");
 
-        private IResourceDictionary? _themeDictionary;
-        private ResourceInclude? _colorInclude;
+        private ResourceDictionary? _themeColorDictionary;
 
         public void Initialize()
         {
             if (Application.Current == null) return;
-
-            var app = Application.Current;
-
-            // Load main theme dictionary
-            var themeUri = new Uri("avares://WidgetDesign.Avalonia/Themes/Theme.axaml");
-            var themeDict = AvaloniaXamlLoader.Load(themeUri) as IResourceDictionary;
-
-            if (themeDict != null)
-            {
-                _themeDictionary = themeDict;
-                app.Resources.MergedDictionaries.Add(_themeDictionary);
-            }
-
-            // Load light color dictionary by default
-            ApplyTheme();
-
+            Application.Current.RequestedThemeVariant = _theme == ThemeType.Light
+              ? ThemeVariant.Light
+              : ThemeVariant.Dark;
             _primaryColor = GetResource<Color>("WD.PrimaryColor");
+            ThemeChanged?.Invoke(_theme);
         }
 
         private void ApplyTheme()
         {
-            if (Application.Current == null || _themeDictionary == null) return;
+            if (Application.Current == null) return;
+
+            Application.Current.RequestedThemeVariant = _theme == ThemeType.Light
+                ? ThemeVariant.Light
+                : ThemeVariant.Dark;
+
+            var appResources = Application.Current.Resources;
 
             var lightUri = new Uri("avares://WidgetDesign.Avalonia/Themes/Basic/Light.Color.axaml");
             var darkUri = new Uri("avares://WidgetDesign.Avalonia/Themes/Basic/Dark.Color.axaml");
+            var newUri = _theme == ThemeType.Light ? lightUri : darkUri;
 
-            // Remove old color include
-            var dicts = _themeDictionary.MergedDictionaries;
-            if (_colorInclude != null)
+            // Remove old theme dictionary
+            if (_themeColorDictionary != null)
             {
-                dicts.Remove(_colorInclude);
+                appResources.MergedDictionaries.Remove(_themeColorDictionary);
             }
 
-            // Load new color dictionary
-            var newUri = _theme == ThemeType.Light ? lightUri : darkUri;
+            // Create a new dictionary for the new theme (new instance = forces DynamicResource re-eval)
             try
             {
                 var colorDict = AvaloniaXamlLoader.Load(newUri) as IResourceDictionary;
-                if (colorDict != null)
+                if (colorDict == null) return;
+
+                _themeColorDictionary = new ResourceDictionary();
+                foreach (var kvp in colorDict)
                 {
-                    _colorInclude = new ResourceInclude(newUri)
-                    {
-                        Source = newUri
-                    };
-                    // Just add the dictionary directly instead of ResourceInclude
-                    dicts.Add(colorDict);
+                    _themeColorDictionary[kvp.Key] = kvp.Value;
                 }
+                appResources.MergedDictionaries.Add(_themeColorDictionary);
             }
             catch { }
 
-            UpdatePrimaryColor();
+            _primaryColor = GetResource<Color>("WD.PrimaryColor");
             ThemeChanged?.Invoke(_theme);
         }
 
         private void UpdatePrimaryColor()
         {
-            SetResourceColor("WD.PrimaryColor", _primaryColor);
-            SetResourceColor("WD.WindowBorderColor", _primaryColor);
-        }
-
-        private void SetResourceColor(string key, Color color)
-        {
             if (Application.Current == null) return;
             var resources = Application.Current.Resources;
-            if (resources.ContainsKey(key))
-            {
-                resources[key] = color;
-                var brushKey = key.Replace("Color", "Brush");
-                resources[brushKey] = new SolidColorBrush(color);
-            }
+            SetResourceColor(resources, "WD.PrimaryColor", _primaryColor);
+            SetResourceColor(resources, "WD.WindowBorderColor", _primaryColor);
+        }
+
+        private static void SetResourceColor(IResourceDictionary resources, string key, Color color)
+        {
+            resources[key] = color;
+            var brushKey = key.Replace("Color", "Brush");
+            resources[brushKey] = new SolidColorBrush(color);
         }
 
         private T? GetResource<T>(string key)
         {
             if (Application.Current == null) return default;
-            var resources = Application.Current.Resources;
-            if (resources.TryGetValue(key, out var value) && value is T typed)
+            if (Application.Current.Resources.TryGetResource(key, null, out var value) && value is T typed)
                 return typed;
             return default;
         }
