@@ -1,8 +1,5 @@
 using Avalonia;
-using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Markup.Xaml;
 using Avalonia.Media;
-using Avalonia.Styling;
 
 namespace WidgetDesign.Avalonia
 {
@@ -10,11 +7,14 @@ namespace WidgetDesign.Avalonia
     {
         /// <summary>
         /// Initialize WidgetDesign theme resources.
-        /// Call this in App.OnFrameworkInitializationCompleted before loading styles.
+        /// Call this after AvaloniaXamlLoader.Load(this) in App.Initialize().
         /// </summary>
         public static AppBuilder UseWidgetDesign(this AppBuilder builder)
         {
-            ThemeManager.Instance.Initialize();
+            builder.AfterSetup(_ =>
+            {
+                ThemeManager.Instance.Initialize();
+            });
             return builder;
         }
 
