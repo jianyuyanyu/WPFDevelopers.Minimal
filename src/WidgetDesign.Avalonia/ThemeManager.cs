@@ -60,7 +60,9 @@ namespace WidgetDesign.Avalonia
             Application.Current.RequestedThemeVariant = _theme == ThemeType.Light
               ? ThemeVariant.Light
               : ThemeVariant.Dark;
-            _primaryColor = GetResource<Color>("WD.PrimaryColor");
+            var defaultColor = Color.Parse("#409EFF");
+            if (_primaryColor == defaultColor)
+                _primaryColor = GetResource<Color>("WD.PrimaryColor");
             ThemeChanged?.Invoke(_theme);
         }
 
@@ -77,14 +79,10 @@ namespace WidgetDesign.Avalonia
             var lightUri = new Uri("avares://WidgetDesign.Avalonia/Themes/Basic/Light.Color.axaml");
             var darkUri = new Uri("avares://WidgetDesign.Avalonia/Themes/Basic/Dark.Color.axaml");
             var newUri = _theme == ThemeType.Light ? lightUri : darkUri;
-
-            // Remove old theme dictionary
             if (_themeColorDictionary != null)
             {
                 appResources.MergedDictionaries.Remove(_themeColorDictionary);
             }
-
-            // Create a new dictionary for the new theme (new instance = forces DynamicResource re-eval)
             try
             {
                 var colorDict = AvaloniaXamlLoader.Load(newUri) as IResourceDictionary;
@@ -95,27 +93,48 @@ namespace WidgetDesign.Avalonia
                 {
                     _themeColorDictionary[kvp.Key] = kvp.Value;
                 }
+
+                var defaultColor = Color.Parse("#409EFF");
+                if (_primaryColor != defaultColor)
+                {
+                    SetResource(_themeColorDictionary, "WD.PrimaryColor", _primaryColor);
+                    SetResource(_themeColorDictionary, "WD.WindowBorderColor", _primaryColor);
+                    SetResource(_themeColorDictionary, "WD.PrimaryMouseOverColor", ComputeMouseOverColor(_primaryColor, _theme));
+                }
+
                 appResources.MergedDictionaries.Add(_themeColorDictionary);
             }
             catch { }
 
-            _primaryColor = GetResource<Color>("WD.PrimaryColor");
             ThemeChanged?.Invoke(_theme);
         }
 
         private void UpdatePrimaryColor()
         {
             if (Application.Current == null) return;
-            var resources = Application.Current.Resources;
-            SetResourceColor(resources, "WD.PrimaryColor", _primaryColor);
-            SetResourceColor(resources, "WD.WindowBorderColor", _primaryColor);
+            var target = _themeColorDictionary ?? (IResourceDictionary)Application.Current.Resources;
+            target["WD.PrimaryColor"] = _primaryColor;
+            target["WD.WindowBorderColor"] = _primaryColor;
+            target["WD.PrimaryMouseOverColor"] = ComputeMouseOverColor(_primaryColor, _theme);
         }
 
-        private static void SetResourceColor(IResourceDictionary resources, string key, Color color)
+        private static Color ComputeMouseOverColor(Color color, ThemeType theme)
+        {
+            var bg = theme == ThemeType.Dark ? Color.Parse("#323232") : Color.Parse("#FFFFFF");
+            return Color.FromArgb((byte)0x1A,
+                BlendAlpha(color.R, bg.R, color.A),
+                BlendAlpha(color.G, bg.G, color.A),
+                BlendAlpha(color.B, bg.B, color.A));
+        }
+
+        private static byte BlendAlpha(byte fg, byte bg, byte alpha)
+        {
+            return (byte)(bg + (fg - bg) * alpha / 255);
+        }
+
+        private static void SetResource(IResourceDictionary resources, string key, Color color)
         {
             resources[key] = color;
-            var brushKey = key.Replace("Color", "Brush");
-            resources[brushKey] = new SolidColorBrush(color);
         }
 
         private T? GetResource<T>(string key)
