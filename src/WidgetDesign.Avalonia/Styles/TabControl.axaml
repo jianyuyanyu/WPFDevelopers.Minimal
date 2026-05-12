@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!-- TabControl Style -->
+    
     <ControlTheme x:Key="{x:Type TabControl}" TargetType="TabControl">
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
         <Setter Property="BorderThickness" Value="1" />
@@ -32,7 +32,7 @@
         </Setter>
     </ControlTheme>
 
-    <!-- TabItem Style -->
+    
     <ControlTheme x:Key="{x:Type TabItem}" TargetType="TabItem">
         <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextBrush}" />
         <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
