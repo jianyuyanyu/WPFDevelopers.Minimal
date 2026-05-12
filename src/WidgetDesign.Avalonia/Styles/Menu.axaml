@@ -4,7 +4,7 @@
 
     <converters:PlatformKeyGestureConverter x:Key="KeyGestureConverter" />
 
-    <!-- Separator -->
+    
     <ControlTheme x:Key="{x:Type Separator}" TargetType="Separator">
         <Setter Property="Background" Value="{DynamicResource WD.LightBrush}" />
         <Setter Property="Focusable" Value="False" />
@@ -21,7 +21,7 @@
         </Setter>
     </ControlTheme>
 
-    <!-- Sub-menu MenuItem -->
+    
     <ControlTheme x:Key="{x:Type MenuItem}" TargetType="MenuItem">
         <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
         <Setter Property="Background" Value="Transparent" />
@@ -138,7 +138,7 @@
         </Style>
     </ControlTheme>
 
-    <!-- Top-level Menu item container -->
+    
     <ControlTheme x:Key="TopLevelMenuItem" TargetType="MenuItem">
         <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
         <Setter Property="Background" Value="Transparent" />
@@ -196,7 +196,7 @@
         </Style>
     </ControlTheme>
 
-    <!-- Menu -->
+    
     <ControlTheme x:Key="{x:Type Menu}" TargetType="Menu">
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
         <Setter Property="ItemContainerTheme" Value="{StaticResource TopLevelMenuItem}" />
@@ -217,7 +217,7 @@
         </Setter>
     </ControlTheme>
 
-    <!-- ContextMenu -->
+    
     <ControlTheme x:Key="{x:Type ContextMenu}" TargetType="ContextMenu">
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
