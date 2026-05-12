@@ -1,7 +1,7 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!-- TextBox Style -->
+    
     <ControlTheme x:Key="{x:Type TextBox}" TargetType="TextBox">
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
@@ -75,36 +75,36 @@
             </ControlTemplate>
         </Setter>
 
-        <!-- Watermark visibility -->
+        
         <Style Selector="^ /template/ TextBlock#PART_Watermark">
             <Setter Property="IsVisible" Value="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.StringIsEmptyConverter}}" />
         </Style>
 
-        <!-- Focus border -->
+        
         <Style Selector="^:focus">
             <Style Selector="^ /template/ Border#border">
                 <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
             </Style>
         </Style>
 
-        <!-- Pointer over border -->
+        
         <Style Selector="^:pointerover">
             <Style Selector="^ /template/ Border#border">
                 <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
             </Style>
         </Style>
 
-        <!-- Disabled -->
+        
         <Style Selector="^:disabled">
             <Setter Property="Opacity" Value="{DynamicResource WD.EnabledOpacity}" />
         </Style>
 
-        <!-- Reveal button visibility -->
+        
         <Style Selector="^:not(:empty) /template/ ToggleButton#PART_RevealButton">
             <Setter Property="IsVisible" Value="{Binding PasswordChar, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.NullToVisibilityConverter_Inverse}}" />
         </Style>
 
-        <!-- Reveal button: toggle eye icons -->
+        
         <Style Selector="^ /template/ ToggleButton#PART_RevealButton:checked">
             <Style Selector="^ /template/ Path#PART_EyeIcon">
                 <Setter Property="IsVisible" Value="False" />
