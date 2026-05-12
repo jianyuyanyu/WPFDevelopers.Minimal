@@ -1,14 +1,14 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!-- Label Style -->
+    
     <ControlTheme x:Key="{x:Type Label}" TargetType="Label">
         <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
         <Setter Property="FontSize" Value="{DynamicResource WD.PrimaryFontSize}" />
         <Setter Property="Padding" Value="0" />
     </ControlTheme>
 
-    <!-- HyperlinkButton Style -->
+    
     <ControlTheme x:Key="{x:Type HyperlinkButton}" TargetType="HyperlinkButton">
         <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
         <Setter Property="Cursor" Value="Hand" />
