@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:converts="using:WidgetDesign.Avalonia.Converts"
+                    xmlns:converters="clr-namespace:Avalonia.Controls.Converters;assembly=Avalonia.Controls"
                     xmlns:sys="using:System">
 
     <ResourceDictionary.MergedDictionaries>
@@ -29,5 +30,6 @@
     <converts:InverseBoolToVisibilityConverter x:Key="WD.NullToVisibilityConverter_Inverse" />
     <converts:HalfValueConverter x:Key="WD.HalfValueConverter" />
     <converts:StringIsEmptyConverter x:Key="WD.StringIsEmptyConverter" />
+    <converters:StringFormatConverter x:Key="StringFormatConverter"/>
 
 </ResourceDictionary>
