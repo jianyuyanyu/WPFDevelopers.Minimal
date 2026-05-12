@@ -1,9 +1,9 @@
-<ResourceDictionary xmlns="https://github.com/avaloniaui"
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <ControlTheme x:Key="{x:Type Slider}" TargetType="Slider">
 
-        <!-- Horizontal RepeatButton template -->
+        
         <Style Selector="^:horizontal /template/ RepeatButton">
             <Setter Property="Template">
                 <ControlTemplate>
@@ -15,13 +15,13 @@
                                 Height="8"
                                 VerticalAlignment="Center"
                                 Background="{TemplateBinding Background}"
-                                CornerRadius="4" />
+                                CornerRadius="{DynamicResource WD.CornerRadius}" />
                     </Grid>
                 </ControlTemplate>
             </Setter>
         </Style>
 
-        <!-- Vertical RepeatButton template -->
+        
         <Style Selector="^:vertical /template/ RepeatButton">
             <Setter Property="Template">
                 <ControlTemplate>
@@ -33,13 +33,13 @@
                                 Width="8"
                                 HorizontalAlignment="Center"
                                 Background="{TemplateBinding Background}"
-                                CornerRadius="4" />
+                                CornerRadius="{DynamicResource WD.CornerRadius}" />
                     </Grid>
                 </ControlTemplate>
             </Setter>
         </Style>
 
-        <!-- Thumb template -->
+        
         <Style Selector="^ /template/ Thumb#PART_Thumb">
             <Setter Property="Width" Value="16" />
             <Setter Property="Height" Value="16" />
@@ -58,17 +58,17 @@
             </Setter>
         </Style>
 
-        <!-- Thumb hover -->
+        
         <Style Selector="^ /template/ Thumb#PART_Thumb:pointerover">
             <Setter Property="BorderBrush" Value="{DynamicResource WD.LightBrush}" />
         </Style>
 
-        <!-- Thumb pressed -->
+        
         <Style Selector="^ /template/ Thumb#PART_Thumb:pressed">
             <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
         </Style>
 
-        <!-- Horizontal Slider -->
+        
         <Style Selector="^:horizontal">
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Template">
@@ -127,7 +127,7 @@
             </Setter>
         </Style>
 
-        <!-- Vertical Slider -->
+        
         <Style Selector="^:vertical">
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Template">
@@ -186,12 +186,12 @@
             </Setter>
         </Style>
 
-        <!-- Vertical thumb margin -->
+        
         <Style Selector="^:vertical /template/ Thumb#PART_Thumb">
             <Setter Property="Margin" Value="0,-8" />
         </Style>
 
-        <!-- TickBar visibility -->
+        
         <Style Selector="^[TickPlacement=TopLeft] /template/ TickBar#PART_TopTick">
             <Setter Property="IsVisible" Value="True" />
         </Style>
@@ -206,7 +206,7 @@
             <Setter Property="IsVisible" Value="False" />
         </Style>
 
-        <!-- Disabled -->
+        
         <Style Selector="^:disabled">
             <Setter Property="Opacity" Value="{DynamicResource WD.EnabledOpacity}" />
         </Style>
