@@ -27,7 +27,7 @@
                 <StackPanel Spacing="12">
                     <TextBlock Text="Buttons" FontSize="18" FontWeight="SemiBold" />
                     <WrapPanel>
-                        <Button Content="Primary" Theme="{StaticResource wd-primary}" Margin="4" />
+                        <Button Content="Primary" Theme="{StaticResource wd-primary}" Margin="4" controls:Mask.IsShow="True"/>
                         <Button Content="Default" Theme="{StaticResource wd-default}" Margin="4" />
                         <Button Content="Normal" Theme="{StaticResource wd-normal}" Margin="4" />
                         <Button Content="Success" Theme="{StaticResource wd-success}" Margin="4" />
@@ -137,7 +137,8 @@
             <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
                 <StackPanel Spacing="12">
                     <TextBlock Text="Progress &amp; Slider" FontSize="18" FontWeight="SemiBold" />
-                    <ProgressBar Value="60" Width="400" HorizontalAlignment="Left" />
+                    <ProgressBar Value="60" Width="400" HorizontalAlignment="Left" ShowProgressText="True"/>
+                    <ProgressBar IsIndeterminate="True" Value="20" Width="400" HorizontalAlignment="Left" />
                     <Slider Width="400" HorizontalAlignment="Left" Minimum="0" Maximum="100" Value="40" />
                 </StackPanel>
             </Border>
