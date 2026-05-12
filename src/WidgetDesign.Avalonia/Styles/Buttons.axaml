@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!-- Primary Button -->
+	
     <ControlTheme x:Key="wd-primary" TargetType="Button">
         <Setter Property="Focusable" Value="False" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -9,6 +9,7 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
         <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource WD.CornerRadius}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Foreground" Value="{DynamicResource WD.WindowTextBrush}" />
         <Setter Property="Background" Value="{DynamicResource WD.PrimaryBrush}" />
@@ -18,7 +19,7 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="4">
+                        CornerRadius="{TemplateBinding CornerRadius}">
                     <ContentPresenter Margin="{TemplateBinding Padding}"
                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -39,7 +40,7 @@
         </Style>
     </ControlTheme>
 
-    <!-- Default Button (outlined) -->
+    
     <ControlTheme x:Key="wd-default" TargetType="Button">
         <Setter Property="Focusable" Value="False" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -47,6 +48,7 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource WD.CornerRadius}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextBrush}" />
@@ -56,7 +58,7 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="4">
+                        CornerRadius="{DynamicResource WD.CornerRadius}">
                     <ContentPresenter Margin="{TemplateBinding Padding}"
                                       Content="{TemplateBinding Content}"
                                       ContentTemplate="{TemplateBinding ContentTemplate}"
@@ -74,7 +76,7 @@
         </Style>
     </ControlTheme>
 
-    <!-- Normal Button (ghost) -->
+    
     <ControlTheme x:Key="wd-normal" TargetType="Button">
         <Setter Property="Focusable" Value="False" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -109,12 +111,13 @@
         </Style>
     </ControlTheme>
 
-    <!-- Success Button (outlined) -->
+    
     <ControlTheme x:Key="wd-success" TargetType="Button">
         <Setter Property="Focusable" Value="False" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.SuccessBrush}" />
         <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource WD.CornerRadius}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Foreground" Value="{DynamicResource WD.SuccessBrush}" />
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
@@ -124,7 +127,7 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="4">
+                        CornerRadius="{DynamicResource WD.CornerRadius}">
                     <ContentPresenter Margin="{TemplateBinding Padding}"
                                       Content="{TemplateBinding Content}"
                                       ContentTemplate="{TemplateBinding ContentTemplate}"
@@ -146,6 +149,7 @@
         <Setter Property="Focusable" Value="False" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource WD.CornerRadius}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="Background" Value="{DynamicResource WD.SuccessBrush}" />
@@ -153,7 +157,7 @@
             <ControlTemplate>
                 <Border Name="PART_Border"
                         Background="{TemplateBinding Background}"
-                        CornerRadius="4">
+                        CornerRadius="{DynamicResource WD.CornerRadius}">
                     <ContentPresenter Margin="{TemplateBinding Padding}"
                                       Content="{TemplateBinding Content}"
                                       ContentTemplate="{TemplateBinding ContentTemplate}"
@@ -170,12 +174,13 @@
         </Style>
     </ControlTheme>
 
-    <!-- Warning Button (outlined) -->
+    
     <ControlTheme x:Key="wd-warning" TargetType="Button">
         <Setter Property="Focusable" Value="False" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.WarningBrush}" />
         <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource WD.CornerRadius}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Foreground" Value="{DynamicResource WD.WarningBrush}" />
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
@@ -185,7 +190,7 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="4">
+                        CornerRadius="{DynamicResource WD.CornerRadius}">
                     <ContentPresenter Margin="{TemplateBinding Padding}"
                                       Content="{TemplateBinding Content}"
                                       ContentTemplate="{TemplateBinding ContentTemplate}"
@@ -207,6 +212,7 @@
         <Setter Property="Focusable" Value="False" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource WD.CornerRadius}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="Background" Value="{DynamicResource WD.WarningBrush}" />
@@ -214,7 +220,7 @@
             <ControlTemplate>
                 <Border Name="PART_Border"
                         Background="{TemplateBinding Background}"
-                        CornerRadius="4">
+                        CornerRadius="{DynamicResource WD.CornerRadius}">
                     <ContentPresenter Margin="{TemplateBinding Padding}"
                                       Content="{TemplateBinding Content}"
                                       ContentTemplate="{TemplateBinding ContentTemplate}"
@@ -231,12 +237,13 @@
         </Style>
     </ControlTheme>
 
-    <!-- Danger Button (outlined) -->
+    
     <ControlTheme x:Key="wd-danger" TargetType="Button">
         <Setter Property="Focusable" Value="False" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.DangerBrush}" />
         <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource WD.CornerRadius}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Foreground" Value="{DynamicResource WD.DangerBrush}" />
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
@@ -246,7 +253,7 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="4">
+                        CornerRadius="{DynamicResource WD.CornerRadius}">
                     <ContentPresenter Margin="{TemplateBinding Padding}"
                                       Content="{TemplateBinding Content}"
                                       ContentTemplate="{TemplateBinding ContentTemplate}"
@@ -268,6 +275,7 @@
         <Setter Property="Focusable" Value="False" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource WD.CornerRadius}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="Background" Value="{DynamicResource WD.DangerBrush}" />
@@ -275,7 +283,7 @@
             <ControlTemplate>
                 <Border Name="PART_Border"
                         Background="{TemplateBinding Background}"
-                        CornerRadius="4">
+                        CornerRadius="{DynamicResource WD.CornerRadius}">
                     <ContentPresenter Margin="{TemplateBinding Padding}"
                                       Content="{TemplateBinding Content}"
                                       ContentTemplate="{TemplateBinding ContentTemplate}"
@@ -292,11 +300,12 @@
         </Style>
     </ControlTheme>
 
-    <!-- Info Button -->
+    
     <ControlTheme x:Key="wd-info" TargetType="Button">
         <Setter Property="Focusable" Value="False" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource WD.CornerRadius}" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="Background" Value="{DynamicResource WD.RegularTextBrush}" />
@@ -304,7 +313,7 @@
             <ControlTemplate>
                 <Border Name="PART_Border"
                         Background="{TemplateBinding Background}"
-                        CornerRadius="4">
+                        CornerRadius="{DynamicResource WD.CornerRadius}">
                     <ContentPresenter Margin="{TemplateBinding Padding}"
                                       Content="{TemplateBinding Content}"
                                       ContentTemplate="{TemplateBinding ContentTemplate}"
@@ -321,7 +330,7 @@
         </Style>
     </ControlTheme>
 
-    <!-- Path Button (icon-only) -->
+    
     <ControlTheme x:Key="wd-path" TargetType="Button">
         <Setter Property="Focusable" Value="False" />
         <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
