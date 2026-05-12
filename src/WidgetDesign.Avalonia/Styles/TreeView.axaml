@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!-- Expand/Collapse ToggleButton for TreeViewItem -->
+    
     <ControlTheme x:Key="ToggleButtonTreeViewItemIconButton" TargetType="ToggleButton">
         <Setter Property="Width" Value="20" />
         <Setter Property="Height" Value="20" />
@@ -18,7 +18,7 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Background="{TemplateBinding Background}"
-                        CornerRadius="4">
+                        CornerRadius="{DynamicResource WD.CornerRadius}">
                     <PathIcon Name="PART_ExpandIcon"
                               Width="10" Height="10"
                               Data="{StaticResource WD.ChevronRightGeometry}"
@@ -40,7 +40,7 @@
         </Style>
     </ControlTheme>
 
-    <!-- TreeView Style -->
+    
     <ControlTheme x:Key="{x:Type TreeView}" TargetType="TreeView">
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
@@ -72,13 +72,13 @@
         </Setter>
     </ControlTheme>
 
-    <!-- TreeViewItem Style -->
+    
     <ControlTheme x:Key="{x:Type TreeViewItem}" TargetType="TreeViewItem">
         <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
         <Setter Property="MinHeight" Value="28" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="{DynamicResource WD.RegularTextBrush}" />
-        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="CornerRadius" Value="{DynamicResource WD.CornerRadius}" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Template">
             <ControlTemplate TargetType="TreeViewItem">
