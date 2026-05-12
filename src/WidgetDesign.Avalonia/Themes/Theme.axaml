@@ -4,7 +4,7 @@
         <ResourceInclude Source="/Themes/Basic/ControlBasic.axaml"/>
         <ResourceInclude Source="/Themes/Basic/Light.Color.axaml"/>
         <ResourceInclude Source="/Themes/Basic/Animations.axaml"/>
-        <!--<ResourceInclude Source="/Controls/PathIconEx/PathIconEx.axaml"/>-->
+        
         <ResourceInclude Source="/Controls/Badge/Badge.axaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
