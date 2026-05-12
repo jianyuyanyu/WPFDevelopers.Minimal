@@ -7,7 +7,8 @@ namespace WidgetDesign.Avalonia
     {
         /// <summary>
         /// Initialize WidgetDesign theme resources.
-        /// Call this after AvaloniaXamlLoader.Load(this) in App.Initialize().
+        /// Optional: if &lt;wd:Resources&gt; is used in App.axaml, this method is not needed.
+        /// If not using Resources in XAML, call this after AvaloniaXamlLoader.Load(this) in App.Initialize().
         /// </summary>
         public static AppBuilder UseWidgetDesign(this AppBuilder builder)
         {
