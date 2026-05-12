@@ -1,12 +1,9 @@
-using System;
+﻿using System;
 using System.Globalization;
 using Avalonia.Data.Converters;
 
 namespace WidgetDesign.Avalonia.Converts
 {
-    /// <summary>
-    /// Returns true if value is true, false otherwise. For IsVisible binding.
-    /// </summary>
     public class BoolToVisibilityConverter : IValueConverter
     {
         public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
@@ -20,9 +17,6 @@ namespace WidgetDesign.Avalonia.Converts
         }
     }
 
-    /// <summary>
-    /// Returns true if value is false. Inverse bool for IsVisible binding.
-    /// </summary>
     public class FalseToVisibilityConverter : IValueConverter
     {
         public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
@@ -36,9 +30,6 @@ namespace WidgetDesign.Avalonia.Converts
         }
     }
 
-    /// <summary>
-    /// Returns true if value is not null/empty. For IsVisible binding.
-    /// </summary>
     public class NullToVisibilityConverter : IValueConverter
     {
         public bool Inverse { get; set; }
@@ -56,9 +47,6 @@ namespace WidgetDesign.Avalonia.Converts
         }
     }
 
-    /// <summary>
-    /// Returns true if value is false or null. Inverse for IsVisible binding.
-    /// </summary>
     public class InverseBoolToVisibilityConverter : IValueConverter
     {
         public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
@@ -72,9 +60,7 @@ namespace WidgetDesign.Avalonia.Converts
         }
     }
 
-    /// <summary>
-    /// Returns half of the input double/int value.
-    /// </summary>
+
     public class HalfValueConverter : IValueConverter
     {
         public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
@@ -92,9 +78,7 @@ namespace WidgetDesign.Avalonia.Converts
         }
     }
 
-    /// <summary>
-    /// Returns the max of two double values.
-    /// </summary>
+
     public class WidthHeightEqualValueConverter : IMultiValueConverter
     {
         public object? Convert(IList<object?> values, Type targetType, object? parameter, CultureInfo culture)
@@ -105,9 +89,7 @@ namespace WidgetDesign.Avalonia.Converts
         }
     }
 
-    /// <summary>
-    /// Returns input value unchanged (placeholder for WPF compatibility).
-    /// </summary>
+
     public class WidthHeightToRectConverter : IValueConverter
     {
         public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
@@ -147,9 +129,6 @@ namespace WidgetDesign.Avalonia.Converts
         }
     }
 
-    /// <summary>
-    /// Returns true if any value in the list is true.
-    /// </summary>
     public class MultiBoolToVisibilityConverter : IMultiValueConverter
     {
         public object? Convert(IList<object?> values, Type targetType, object? parameter, CultureInfo culture)
@@ -351,9 +330,6 @@ namespace WidgetDesign.Avalonia.Converts
         }
     }
 
-    /// <summary>
-    /// Returns true if string is null or empty. For watermark IsVisible binding.
-    /// </summary>
     public class StringIsEmptyConverter : IValueConverter
     {
         public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
