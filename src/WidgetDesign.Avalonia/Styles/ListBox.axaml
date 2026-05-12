@@ -1,7 +1,7 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!-- ListBox Style -->
+    
     <ControlTheme x:Key="{x:Type ListBox}" TargetType="ListBox">
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
@@ -27,7 +27,7 @@
         </Setter>
     </ControlTheme>
 
-    <!-- ListBoxItem Style -->
+    
     <ControlTheme x:Key="{x:Type ListBoxItem}" TargetType="ListBoxItem">
         <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
         <Setter Property="MinHeight" Value="30" />
@@ -38,7 +38,7 @@
                 <Border Name="border"
                         Background="Transparent"
                         Padding="{TemplateBinding Padding}"
-                        CornerRadius="4"
+                        CornerRadius="{DynamicResource WD.CornerRadius}"
                         HorizontalAlignment="Stretch">
                     <ContentPresenter Content="{TemplateBinding Content}"
                                       ContentTemplate="{TemplateBinding ContentTemplate}"
