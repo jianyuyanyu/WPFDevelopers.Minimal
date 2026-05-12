@@ -1,6 +1,4 @@
-using System;
 using Avalonia;
-using WidgetDesign.Avalonia;
 
 namespace WidgetDesign.Demo
 {
@@ -13,7 +11,6 @@ namespace WidgetDesign.Demo
         public static AppBuilder BuildAvaloniaApp()
             => AppBuilder.Configure<App>()
                 .UsePlatformDetect()
-                .LogToTrace()
-                .UseWidgetDesign();
+                .LogToTrace();
     }
 }
