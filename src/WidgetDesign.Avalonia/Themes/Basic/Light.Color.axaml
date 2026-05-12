@@ -1,7 +1,7 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!-- Light Theme Colors -->
+    
     <Color x:Key="WD.PrimaryTextColor">#303133</Color>
     <SolidColorBrush x:Key="WD.PrimaryTextBrush" Color="{StaticResource WD.PrimaryTextColor}" />
 
