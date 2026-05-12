@@ -110,7 +110,7 @@
             </ControlTemplate>
         </Setter>
         <Style Selector="^:pointerover /template/ Border#border">
-            <Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
+            <Setter Property="Background" Value="{DynamicResource WD.BaseMoveBrush}" />
         </Style>
         <Style Selector="^:selected /template/ Border#border">
             <Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
