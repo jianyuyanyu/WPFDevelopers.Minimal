@@ -2,9 +2,9 @@
 xmlns="https://github.com/avaloniaui"
 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!-- DataGridCell Style - no borders, only vertical separator -->
+    
     <ControlTheme x:Key="{x:Type DataGridCell}" TargetType="DataGridCell">
-        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
@@ -33,7 +33,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
         </Setter>
     </ControlTheme>
 
-    <!-- DataGridColumnHeader Style -->
+    
     <ControlTheme x:Key="{x:Type DataGridColumnHeader}" TargetType="DataGridColumnHeader">
         <Setter Property="Background" Value="{DynamicResource WD.BaseMoveBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
@@ -104,7 +104,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     </ControlTheme>
 
-    <!-- Top-left corner header -->
+    
     <ControlTheme x:Key="DataGridTopLeftCornerHeader" TargetType="DataGridColumnHeader">
         <Setter Property="Background" Value="{DynamicResource WD.BaseMoveBrush}" />
         <Setter Property="Focusable" Value="False" />
@@ -118,7 +118,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
         </Setter>
     </ControlTheme>
 
-    <!-- DataGridRowHeader Style - no borders -->
+    
     <ControlTheme x:Key="{x:Type DataGridRowHeader}" TargetType="DataGridRowHeader">
         <Setter Property="Focusable" Value="False" />
         <Setter Property="AreSeparatorsVisible" Value="False" />
@@ -161,7 +161,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
         </Style>
     </ControlTheme>
 
-    <!-- DataGridRow Style -->
+    
     <ControlTheme x:Key="{x:Type DataGridRow}" TargetType="DataGridRow">
         <Setter Property="Focusable" Value="False" />
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
@@ -202,12 +202,15 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
         <Style Selector="^:selected /template/ Border#BackgroundBorder">
             <Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
         </Style>
+        <Style Selector="^:selected /template/ DataGridCellsPresenter > DataGridCell">
+            <Setter Property="Foreground" Value="White" />
+        </Style>
         <Style Selector="^:invalid /template/ Rectangle#InvalidVisualElement">
             <Setter Property="Opacity" Value="0.2" />
         </Style>
     </ControlTheme>
 
-    <!-- DataGrid Style -->
+    
     <ControlTheme x:Key="{x:Type DataGrid}" TargetType="DataGrid">
         <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
