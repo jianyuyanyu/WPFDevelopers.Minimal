@@ -2,8 +2,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <ControlTheme x:Key="{x:Type Slider}" TargetType="Slider">
-
-        
         <Style Selector="^:horizontal /template/ RepeatButton">
             <Setter Property="Template">
                 <ControlTemplate>
@@ -12,7 +10,7 @@
                                 Margin="0,-10"
                                 Background="Transparent" />
                         <Border Name="TrackBackground"
-                                Height="8"
+                                Height="4"
                                 VerticalAlignment="Center"
                                 Background="{TemplateBinding Background}"
                                 CornerRadius="{DynamicResource WD.CornerRadius}" />
@@ -21,7 +19,6 @@
             </Setter>
         </Style>
 
-        
         <Style Selector="^:vertical /template/ RepeatButton">
             <Setter Property="Template">
                 <ControlTemplate>
@@ -30,7 +27,7 @@
                                 Margin="-10,0"
                                 Background="Transparent" />
                         <Border Name="TrackBackground"
-                                Width="8"
+                                Width="4"
                                 HorizontalAlignment="Center"
                                 Background="{TemplateBinding Background}"
                                 CornerRadius="{DynamicResource WD.CornerRadius}" />
@@ -38,36 +35,32 @@
                 </ControlTemplate>
             </Setter>
         </Style>
-
         
         <Style Selector="^ /template/ Thumb#PART_Thumb">
-            <Setter Property="Width" Value="16" />
-            <Setter Property="Height" Value="16" />
+            <Setter Property="Width" Value="14" />
+            <Setter Property="Height" Value="14" />
             <Setter Property="Cursor" Value="Hand" />
             <Setter Property="Focusable" Value="False" />
-            <Setter Property="Margin" Value="-8,0" />
+            <Setter Property="Margin" Value="-3,0" />
             <Setter Property="Template">
                 <ControlTemplate>
-                    <Border Width="16"
-                            Height="16"
+                    <Border Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}"
                             Background="White"
                             BorderBrush="{DynamicResource WD.PrimaryBrush}"
                             BorderThickness="1.5"
-                            CornerRadius="8" />
+                            CornerRadius="7" />
                 </ControlTemplate>
             </Setter>
         </Style>
-
         
         <Style Selector="^ /template/ Thumb#PART_Thumb:pointerover">
             <Setter Property="BorderBrush" Value="{DynamicResource WD.LightBrush}" />
         </Style>
-
         
         <Style Selector="^ /template/ Thumb#PART_Thumb:pressed">
             <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
         </Style>
-
         
         <Style Selector="^:horizontal">
             <Setter Property="Focusable" Value="False" />
@@ -126,7 +119,6 @@
                 </ControlTemplate>
             </Setter>
         </Style>
-
         
         <Style Selector="^:vertical">
             <Setter Property="Focusable" Value="False" />
@@ -185,28 +177,21 @@
                 </ControlTemplate>
             </Setter>
         </Style>
-
-        
         <Style Selector="^:vertical /template/ Thumb#PART_Thumb">
-            <Setter Property="Margin" Value="0,-8" />
+            <Setter Property="Margin" Value="0,-3" />
         </Style>
-
-        
         <Style Selector="^[TickPlacement=TopLeft] /template/ TickBar#PART_TopTick">
             <Setter Property="IsVisible" Value="True" />
         </Style>
         <Style Selector="^[TickPlacement=TopLeft] /template/ TickBar#PART_BottomTick">
             <Setter Property="IsVisible" Value="False" />
         </Style>
-
         <Style Selector="^[TickPlacement=BottomRight] /template/ TickBar#PART_BottomTick">
             <Setter Property="IsVisible" Value="True" />
         </Style>
         <Style Selector="^[TickPlacement=BottomRight] /template/ TickBar#PART_TopTick">
             <Setter Property="IsVisible" Value="False" />
         </Style>
-
-        
         <Style Selector="^:disabled">
             <Setter Property="Opacity" Value="{DynamicResource WD.EnabledOpacity}" />
         </Style>
