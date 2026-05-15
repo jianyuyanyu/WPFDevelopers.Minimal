@@ -68,14 +68,9 @@ namespace WidgetDesign.Avalonia.Controls
         private static void UpdateContent(Control control)
         {
             var data = control.GetValue(OverlayDataProperty);
-            if (data is OverlayInfo info)
+            if (data is OverlayInfo info && info.OverlayGrid is Grid g && g.Children.Count > 1 && g.Children[1] is ContentPresenter cp)
             {
-                info.Border.Child = new ContentPresenter
-                {
-                    HorizontalAlignment = global::Avalonia.Layout.HorizontalAlignment.Center,
-                    VerticalAlignment = global::Avalonia.Layout.VerticalAlignment.Center,
-                    Content = control.GetValue(MaskContentProperty)
-                };
+                cp.Content = control.GetValue(MaskContentProperty);
             }
         }
 
@@ -89,31 +84,41 @@ namespace WidgetDesign.Avalonia.Controls
             var cornerRadius = GetCornerRadius(control);
             var maskContent = control.GetValue(MaskContentProperty);
 
-            var border = new Border
+            var overlayGrid = new Grid
+            {
+                Width = control.Bounds.Width,
+                Height = control.Bounds.Height
+            };
+
+            var backgroundLayer = new Border
             {
                 Background = background,
                 CornerRadius = cornerRadius,
-                Opacity = 0.7,
-                IsHitTestVisible = true,
-                Child = new ContentPresenter
-                {
-                    HorizontalAlignment = global::Avalonia.Layout.HorizontalAlignment.Center,
-                    VerticalAlignment = global::Avalonia.Layout.VerticalAlignment.Center,
-                    Content = maskContent
-                }
+                Opacity = 0.6,
+                IsHitTestVisible = true
             };
+
+            var contentLayer = new ContentPresenter
+            {
+                HorizontalAlignment = global::Avalonia.Layout.HorizontalAlignment.Center,
+                VerticalAlignment = global::Avalonia.Layout.VerticalAlignment.Center,
+                Content = maskContent
+            };
+
+            overlayGrid.Children.Add(backgroundLayer);
+            overlayGrid.Children.Add(contentLayer);
 
             var vlm = FindVisualLayerManager(control);
             if (vlm != null)
             {
-                vlm.AdornerLayer.Children.Add(border);
-                control.SetValue(OverlayDataProperty, new OverlayInfo { Border = border, Mode = OverlayMode.Adorner });
-                UpdateOverlaySize(control, border);
+                vlm.AdornerLayer.Children.Add(overlayGrid);
+                AdornerLayer.SetAdornedElement(overlayGrid, control);
+                control.SetValue(OverlayDataProperty, new OverlayInfo { OverlayGrid = overlayGrid, Mode = OverlayMode.Adorner });
                 control.LayoutUpdated += OnLayoutUpdated;
                 return;
             }
 
-            TryInsertOverlay(control, border);
+            TryInsertOverlay(control, overlayGrid);
         }
 
         private static void HideMask(Control control)
@@ -123,13 +128,13 @@ namespace WidgetDesign.Avalonia.Controls
 
             control.LayoutUpdated -= OnLayoutUpdated;
 
-            if (info.Mode == OverlayMode.Adorner && info.Border.Parent is AdornerLayer al)
+            if (info.Mode == OverlayMode.Adorner && info.OverlayGrid?.Parent is AdornerLayer al)
             {
-                al.Children.Remove(info.Border);
+                al.Children.Remove(info.OverlayGrid);
             }
-            else if (info.Grid != null)
+            else if (info.OverlayGrid != null)
             {
-                RestoreGridChild(info.Grid, control);
+                RestoreGridChild(info.OverlayGrid.GetVisualParent() as Grid, control);
             }
 
             control.SetValue(OverlayDataProperty, null);
@@ -140,23 +145,10 @@ namespace WidgetDesign.Avalonia.Controls
             if (sender is Control control)
             {
                 var data = control.GetValue(OverlayDataProperty);
-                if (data is OverlayInfo info)
-                    UpdateOverlaySize(control, info.Border);
-            }
-        }
-
-        private static void UpdateOverlaySize(Control control, Border border)
-        {
-            border.Width = control.Bounds.Width;
-            border.Height = control.Bounds.Height;
-
-            if (border.Parent is AdornerLayer al)
-            {
-                var pt = control.TranslatePoint(new Point(0, 0), al);
-                if (pt != null)
+                if (data is OverlayInfo info && info.OverlayGrid != null)
                 {
-                    Canvas.SetLeft(border, pt.Value.X);
-                    Canvas.SetTop(border, pt.Value.Y);
+                    info.OverlayGrid.Width = control.Bounds.Width;
+                    info.OverlayGrid.Height = control.Bounds.Height;
                 }
             }
         }
@@ -173,7 +165,7 @@ namespace WidgetDesign.Avalonia.Controls
             return null;
         }
 
-        private static void TryInsertOverlay(Control control, Border border)
+        private static void TryInsertOverlay(Control control, Grid overlay)
         {
             Visual? current = control.GetVisualParent();
             Control? childToReplace = control;
@@ -186,12 +178,11 @@ namespace WidgetDesign.Avalonia.Controls
                     if (index < 0) break;
 
                     panel.Children.RemoveAt(index);
-                    var grid = new Grid { Children = { control, border } };
+                    var grid = new Grid { Children = { control, overlay } };
                     panel.Children.Insert(index, grid);
                     control.SetValue(OverlayDataProperty, new OverlayInfo
                     {
-                        Border = border,
-                        Grid = grid,
+                        OverlayGrid = overlay,
                         Mode = OverlayMode.GridWrap
                     });
                     control.LayoutUpdated += OnLayoutUpdated;
@@ -201,12 +192,11 @@ namespace WidgetDesign.Avalonia.Controls
                 if (current is ContentControl cc)
                 {
                     if (!ReferenceEquals(cc.Content, childToReplace)) break;
-                    var grid = new Grid { Children = { control, border } };
+                    var grid = new Grid { Children = { control, overlay } };
                     cc.Content = grid;
                     control.SetValue(OverlayDataProperty, new OverlayInfo
                     {
-                        Border = border,
-                        Grid = grid,
+                        OverlayGrid = overlay,
                         Mode = OverlayMode.GridWrap
                     });
                     control.LayoutUpdated += OnLayoutUpdated;
@@ -216,12 +206,11 @@ namespace WidgetDesign.Avalonia.Controls
                 if (current is Decorator dec)
                 {
                     if (!ReferenceEquals(dec.Child, childToReplace)) break;
-                    var grid = new Grid { Children = { control, border } };
+                    var grid = new Grid { Children = { control, overlay } };
                     dec.Child = grid;
                     control.SetValue(OverlayDataProperty, new OverlayInfo
                     {
-                        Border = border,
-                        Grid = grid,
+                        OverlayGrid = overlay,
                         Mode = OverlayMode.GridWrap
                     });
                     control.LayoutUpdated += OnLayoutUpdated;
@@ -231,12 +220,11 @@ namespace WidgetDesign.Avalonia.Controls
                 if (current is ContentPresenter cp)
                 {
                     if (!ReferenceEquals(cp.Content, childToReplace)) break;
-                    var grid = new Grid { Children = { control, border } };
+                    var grid = new Grid { Children = { control, overlay } };
                     cp.Content = grid;
                     control.SetValue(OverlayDataProperty, new OverlayInfo
                     {
-                        Border = border,
-                        Grid = grid,
+                        OverlayGrid = overlay,
                         Mode = OverlayMode.GridWrap
                     });
                     control.LayoutUpdated += OnLayoutUpdated;
@@ -248,15 +236,17 @@ namespace WidgetDesign.Avalonia.Controls
             }
         }
 
-        private static void RestoreGridChild(Grid grid, Control control)
+        private static void RestoreGridChild(Grid? wrapperGrid, Control control)
         {
-            grid.Children.Remove(control);
-            grid.Children.Clear();
+            if (wrapperGrid == null) return;
 
-            var parent = grid.GetVisualParent();
+            wrapperGrid.Children.Remove(control);
+            wrapperGrid.Children.Clear();
+
+            var parent = wrapperGrid.GetVisualParent();
             if (parent is Panel panel)
             {
-                var index = panel.Children.IndexOf(grid);
+                var index = panel.Children.IndexOf(wrapperGrid);
                 panel.Children.RemoveAt(index);
                 panel.Children.Insert(index, control);
             }
@@ -276,8 +266,7 @@ namespace WidgetDesign.Avalonia.Controls
 
         private class OverlayInfo
         {
-            public required Border Border;
-            public Grid? Grid;
+            public required Grid OverlayGrid;
             public required OverlayMode Mode;
         }
 
