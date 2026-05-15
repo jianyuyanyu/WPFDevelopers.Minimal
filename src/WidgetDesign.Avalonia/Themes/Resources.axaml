@@ -7,7 +7,6 @@
         <ResourceInclude Source="/Controls/PathIconEx/PathIconEx.axaml"/>
         <ResourceInclude Source="/Controls/Badge/Badge.axaml"/>
         <ResourceInclude Source="/Controls/Tag/Tag.axaml"/>
-        <ResourceInclude Source="/Controls/Mask/Mask.axaml"/>
         <ResourceInclude Source="/Styles/ScrollBar.axaml"/>
         <ResourceInclude Source="/Styles/Buttons.axaml"/>
         <ResourceInclude Source="/Styles/DataGrid.axaml"/>
