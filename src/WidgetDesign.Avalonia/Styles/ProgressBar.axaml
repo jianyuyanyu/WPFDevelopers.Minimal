@@ -9,8 +9,7 @@
         <Setter Property="CornerRadius" Value="{DynamicResource WD.CornerRadius}" />
         <Setter Property="Template">
             <ControlTemplate>
-                <Grid x:Name="PART_HorizontalRoot"
-                      ColumnDefinitions="Auto, *, Auto">
+                <Grid ColumnDefinitions="Auto, *, Auto" RowDefinitions="Auto, *, Auto">
                     <Border Name="PART_Track"
                             Grid.Column="1"
                             Height="4"
@@ -64,29 +63,64 @@
                             </Panel>
                         </Panel>
                     </Border>
-                    <TextBlock Name="PART_Text"
-                               Width="0"
-                               Height="0"
-                               Grid.Column="2"
-                               Foreground="{DynamicResource WD.RegularTextColor}"
-                               FontSize="10"
-                               IsVisible="{TemplateBinding ShowProgressText}"
-                               VerticalAlignment="Center"
-                               Margin="4,0,0,0">
-                        <TextBlock.Text>
-                            <MultiBinding Converter="{StaticResource StringFormatConverter}">
-                                <TemplateBinding Property="ProgressTextFormat" />
-                                <TemplateBinding Property="Value" />
-                                <TemplateBinding Property="Percentage" />
-                                <TemplateBinding Property="Minimum" />
-                                <TemplateBinding Property="Maximum" />
-                            </MultiBinding>
-                        </TextBlock.Text>
-                    </TextBlock>
+                    <LayoutTransformControl Name="PART_LayoutTransform"
+                                            Grid.Column="2"
+                                            IsVisible="{TemplateBinding ShowProgressText}">
+                        <TextBlock Name="PART_Text"
+                                   Width="0"
+                                   Height="0"
+                                   Foreground="{DynamicResource WD.RegularTextColor}"
+                                   FontSize="10"
+                                   VerticalAlignment="Center"
+                                   Margin="4,0,0,0">
+                            <TextBlock.Text>
+                                <MultiBinding Converter="{StaticResource StringFormatConverter}">
+                                    <TemplateBinding Property="ProgressTextFormat" />
+                                    <TemplateBinding Property="Value" />
+                                    <TemplateBinding Property="Percentage" />
+                                    <TemplateBinding Property="Minimum" />
+                                    <TemplateBinding Property="Maximum" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </LayoutTransformControl>
                 </Grid>
             </ControlTemplate>
         </Setter>
 
+        <Style Selector="^:vertical">
+            <Setter Property="Width" Value="8" />
+            <Setter Property="Height" Value="150" />
+        </Style>
+        <Style Selector="^:vertical /template/ Border#PART_Track">
+            <Setter Property="Grid.Row" Value="1" />
+            <Setter Property="Width" Value="4"/>
+            <Setter Property="Height" Value="NaN" />
+        </Style>
+        <Style Selector="^:vertical /template/ LayoutTransformControl#PART_LayoutTransform">
+            <Setter Property="LayoutTransform">
+                <RotateTransform Angle="-90" />
+            </Setter>
+            <Setter Property="Grid.Column" Value="1" />
+            <Setter Property="Grid.Row" Value="0" />
+            <Setter Property="Margin" Value="0,0,0,4"/>
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+        <Style Selector="^:vertical /template/ TextBlock#PART_Text">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0" />
+        </Style>
+
+        <Style Selector="^:horizontal /template/ Border#PART_Track">
+            <Setter Property="Grid.Row" Value="1" />
+        </Style>
+
+        <Style Selector="^:horizontal /template/ LayoutTransformControl#PART_LayoutTransform">
+            <Setter Property="Grid.Row" Value="1" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="4,0,0,0" />
+        </Style>
         <Style Selector="^:horizontal[ShowProgressText=True] /template/ TextBlock#PART_Text">
             <Setter Property="Height" Value="NaN" />
             <Style.Animations>
@@ -100,7 +134,6 @@
                 </Animation>
             </Style.Animations>
         </Style>
-
         <Style Selector="^:horizontal[ShowProgressText=False] /template/ TextBlock#PART_Text">
             <Style.Animations>
                 <Animation FillMode="Forward" Duration="0:0:0.35">
@@ -113,11 +146,9 @@
                 </Animation>
             </Style.Animations>
         </Style>
-
         <Style Selector="^:vertical[ShowProgressText=True] /template/ TextBlock#PART_Text">
             <Setter Property="Width" Value="NaN" />
             <Setter Property="Height" Value="NaN" />
-            <Setter Property="Margin" Value="0,0,0,4" />
         </Style>
 
         <Style Selector="^:indeterminate /template/ Panel#DeterminateRoot">
@@ -133,7 +164,6 @@
         <Style Selector="^:horizontal /template/ Border#IndeterminateBar2">
             <Setter Property="Width" Value="{Binding $parent[ProgressBar].TemplateSettings.Container2Width}" />
         </Style>
-
         <Style Selector="^:vertical /template/ Border#IndeterminateBar1">
             <Setter Property="Height" Value="{Binding $parent[ProgressBar].TemplateSettings.ContainerWidth}" />
             <Setter Property="HorizontalAlignment" Value="Stretch" />
@@ -180,6 +210,7 @@
             </Style.Animations>
         </Style>
 
+        <!-- Indeterminate animation: vertical Y-axis -->
         <Style Selector="^:vertical:indeterminate /template/ Border#IndeterminateBar1">
             <Style.Animations>
                 <Animation IterationCount="Infinite" Duration="0:0:2">
@@ -209,19 +240,6 @@
                     </KeyFrame>
                 </Animation>
             </Style.Animations>
-        </Style>
-
-        <Style Selector="^:vertical">
-            <Setter Property="Width" Value="8" />
-            <Setter Property="Height" Value="150" />
-        </Style>
-        <Style Selector="^:vertical /template/ Border#PART_Track">
-            <Setter Property="Width" Value="4"/>
-            <Setter Property="Height" Value="NaN" />
-        </Style>
-        <Style Selector="^:vertical /template/ TextBlock#PART_Text">
-            <Setter Property="VerticalAlignment" Value="Bottom"/>
-            <Setter Property="Margin" Value="0,4,0,0"/>
         </Style>
     </ControlTheme>
 
