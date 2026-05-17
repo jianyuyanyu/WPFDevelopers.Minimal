@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div align="center"><img src="https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal/raw/main/src/WPFDevelopers.Minimal/WPFDevelopers.Minimal.Sample.Net40/Resources/WPFDevelopers.Minimal.png"/></div> 
 
 [中文](https://github.com/WPFDevelopersOrg/WPFDevelopers.Minimal/blob/master/README-zh.md)   
@@ -784,3 +785,6 @@ WPFDevelopers.Minimal.Controls.MessageBox.Show("当前文件不存在,是否继�
         ![8](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/8.png)  
         ![9](https://raw.githubusercontent.com/WPFDevelopersOrg/ResourcesCache/main/resources/WPFDevelopers.Minimal/9.png)  
 
+=======
+# WidgetsDesign.Avalonia
+>>>>>>> new-repo/main

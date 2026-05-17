@@ -1,0 +1,309 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="using:WidgetDesign.Avalonia.Controls"
+        xmlns:local="using:WidgetDesign.Demo"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+        x:Class="WidgetDesign.Demo.MainWindow"
+        Icon="avares://WidgetDesign.Demo/Assets/WidgetDesign.ico"
+        WindowStartupLocation="CenterScreen"
+        Title="WidgetDesign Demo"
+        Width="800" Height="600">
+    <ScrollViewer Margin="2">
+        <StackPanel Spacing="20">
+            <!--Title-->
+            <TextBlock Text="WidgetDesign.Avalonia Demo"
+                       FontSize="24" FontWeight="Bold"
+                       HorizontalAlignment="Center" />
+
+            <!--Theme Toggle-->
+            <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
+                <TextBlock Text="Theme:" VerticalAlignment="Center" />
+                <Button Name="ThemeToggle" Content="Switch to Dark" Theme="{StaticResource wd-primary}" />
+            </StackPanel>
+
+            <!--Buttons Section-->
+            <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
+                <StackPanel Spacing="12">
+                    <TextBlock Text="Buttons" FontSize="18" FontWeight="SemiBold" />
+                    <WrapPanel>
+                        <Button Content="Primary" Theme="{StaticResource wd-primary}" Margin="4" controls:Mask.IsShow="True"/>
+                        <Button Content="Default" Theme="{StaticResource wd-default}" Margin="4" />
+                        <Button Content="Normal" Theme="{StaticResource wd-normal}" Margin="4" />
+                        <Button Content="Success" Theme="{StaticResource wd-success}" Margin="4" controls:Loading.IsShow="True" />
+                        <Button Content="Warning" Theme="{StaticResource wd-warning}" Margin="4" />
+                        <Button Content="Danger" Theme="{StaticResource wd-danger}" Margin="4" />
+                        <Button Content="Filled Success" Theme="{StaticResource wd-success-filled}" Margin="4" />
+                        <Button Content="Filled Warning" Theme="{StaticResource wd-warning-filled}" Margin="4" />
+                        <Button Content="Filled Danger" Theme="{StaticResource wd-danger-filled}" Margin="4" />
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
+
+            <!--PathIcon Section-->
+            <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
+                <StackPanel Spacing="12">
+                    <TextBlock Text="Icons" FontSize="18" FontWeight="SemiBold" />
+                    <WrapPanel>
+                        <controls:PathIconEx Kind="Home" Width="24" Height="24" Foreground="{DynamicResource WD.PrimaryBrush}" Margin="4" />
+                        <controls:PathIconEx Kind="CheckMark" Width="24" Height="24" Foreground="{DynamicResource WD.SuccessBrush}" Margin="4" />
+                        <controls:PathIconEx Kind="Warning" Width="24" Height="24" Foreground="{DynamicResource WD.WarningBrush}" Margin="4" />
+                        <controls:PathIconEx Kind="Error" Width="24" Height="24" Foreground="{DynamicResource WD.DangerBrush}" Margin="4" />
+                        <controls:PathIconEx Kind="Info" Width="24" Height="24" Foreground="{DynamicResource WD.PrimaryBrush}" Margin="4" />
+                        <controls:PathIconEx Kind="Star" Width="24" Height="24" Foreground="{DynamicResource WD.WarningBrush}" Margin="4" />
+                        <controls:PathIconEx Kind="Add" Width="24" Height="24" Foreground="{DynamicResource WD.PrimaryBrush}" Margin="4" />
+                        <controls:PathIconEx Kind="Time" Width="24" Height="24" Foreground="{DynamicResource WD.RegularTextBrush}" Margin="4" />
+                        <controls:PathIconEx Kind="DatePicker" Width="24" Height="24" Foreground="{DynamicResource WD.RegularTextBrush}" Margin="4" />
+                        <controls:PathIconEx Kind="Copy" Width="24" Height="24" Foreground="{DynamicResource WD.RegularTextBrush}" Margin="4" />
+                        <controls:PathIconEx Kind="Undo" Width="24" Height="24" Foreground="{DynamicResource WD.RegularTextBrush}" Margin="4" />
+                        <controls:PathIconEx Kind="Filter" Width="24" Height="24" Foreground="{DynamicResource WD.RegularTextBrush}" Margin="4" />
+                        <PathIcon Data="{StaticResource WD.CheckMarkGeometry}" Foreground="{DynamicResource WD.SuccessBrush}" Width="24" Height="24" Margin="4" />
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
+
+            <!--Inputs Section-->
+            <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
+                <StackPanel Spacing="12">
+                    <TextBlock Text="Inputs" FontSize="18" FontWeight="SemiBold" />
+                    <TextBox Text="" Watermark="Enter text here..." Width="200" MaxWidth="400" HorizontalAlignment="Left" />
+                    <TextBox PasswordChar="*" Watermark="Enter password here..." Width="200" MaxWidth="400" HorizontalAlignment="Left"/>
+                    <StackPanel Orientation="Horizontal" Spacing="16">
+                        <CheckBox Content="CheckBox (checked)" IsChecked="True" />
+                        <CheckBox Content="CheckBox (unchecked)" />
+                        <CheckBox Content="CheckBox (indeterminate)" IsThreeState="True" IsChecked="{x:Null}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Spacing="16">
+                        <RadioButton Content="Option A" GroupName="demo" IsChecked="True" />
+                        <RadioButton Content="Option B" GroupName="demo" />
+                        <RadioButton Content="Option C" GroupName="demo" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Spacing="16">
+                        <ToggleButton Content="Toggle Off" />
+                        <ToggleButton Content="Toggle On" IsChecked="True" />
+                        <ToggleButton Classes="wd-switch" IsChecked="True" />
+                        <ToggleButton Classes="wd-switch" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!--Tag Section-->
+            <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
+                <StackPanel Spacing="12">
+                    <TextBlock Text="Tags" FontSize="18" FontWeight="SemiBold" />
+                    <WrapPanel>
+                        <controls:Tag Content="Default Tag" Margin="4" Close="Tag_Close" />
+                        <controls:Tag Content="Non-closable" IsClose="False" Margin="4" />
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
+
+            <!--Loading Section-->
+            <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
+                <StackPanel Spacing="12">
+                    <TextBlock Text="Loading" FontSize="18" FontWeight="SemiBold" />
+                    <StackPanel Orientation="Horizontal" Spacing="32">
+                        <Label Content="Lable" VerticalContentAlignment="Center"
+                               HorizontalContentAlignment="Center"
+                               Background="{StaticResource WD.PrimaryBrush}"
+                               Width="100" Height="100"
+                               controls:Loading.IsShow="True"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!--Badge Section-->
+            <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
+                <StackPanel Spacing="12">
+                    <TextBlock Text="Badge" FontSize="18" FontWeight="SemiBold" />
+                    <WrapPanel>
+                        <controls:Badge Text="5" Margin="16">
+                            <Button Content="Messages" Theme="{StaticResource wd-default}" />
+                        </controls:Badge>
+                        <controls:Badge Text="99+" Margin="16" CornerRadius="4">
+                            <Button Content="Notifications" Theme="{StaticResource wd-default}" />
+                        </controls:Badge>
+                        <controls:Badge IsDot="True" Margin="16">
+                            <Button Content="Dot Badge" Theme="{StaticResource wd-default}" />
+                        </controls:Badge>
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
+
+            <!--Progress Section-->
+            <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
+                <Grid ColumnDefinitions="Auto,Auto" ColumnSpacing="4">
+                    <StackPanel Spacing="12">
+                        <TextBlock Text="Progress &amp; Slider" FontSize="18" FontWeight="SemiBold" />
+                        <ProgressBar Value="60" Width="400" HorizontalAlignment="Left" ShowProgressText="True"/>
+                        <ProgressBar IsIndeterminate="True" Value="20" Width="400" HorizontalAlignment="Left" />
+                        <Slider Width="400" HorizontalAlignment="Left" Minimum="0" Maximum="100" Value="40" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Spacing="12" Orientation="Horizontal">
+                        <ProgressBar Value="20" Height="300" Orientation="Vertical" HorizontalAlignment="Left" ShowProgressText="True"/>
+                        <ProgressBar IsIndeterminate="True" Value="20" Height="300" Orientation="Vertical" HorizontalAlignment="Left" />
+                        <Slider Width="400" Orientation="Vertical" HorizontalAlignment="Left" Minimum="0" Maximum="100" Value="40" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!--Expander Section-->
+            <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
+                <StackPanel Spacing="12">
+                    <TextBlock Text="Expander" FontSize="18" FontWeight="SemiBold" />
+                    <UniformGrid Margin="0,10" Columns="2" ColumnSpacing="5" RowSpacing="5">
+                        <Expander Header="Expander">
+                            <Rectangle
+                            Width="400"
+                            Height="300"
+                            Fill="{DynamicResource WD.DangerBrush}" />
+                        </Expander>
+                        <Expander
+                        ExpandDirection="Up"
+                        FlowDirection="RightToLeft"
+                        Header="Expander1"
+                        IsExpanded="True">
+                            <Rectangle Width="400"
+                                       Height="300"
+                                       Fill="{DynamicResource WD.LightBrush}" />
+                        </Expander>
+                        <Expander ExpandDirection="Right" Header="Expander">
+                            <Rectangle
+                            Width="400"
+                            Height="300"
+                            Fill="{DynamicResource WD.SuccessMouseOverBrush}" />
+                        </Expander>
+                        <Expander
+                        ExpandDirection="Left"
+                        IsExpanded="True" Header="Expander">
+                            <Rectangle
+                            Width="400"
+                            Height="300"
+                            Fill="{DynamicResource WD.PrimaryBrush}" />
+                        </Expander>
+                    </UniformGrid>
+                </StackPanel>
+            </Border>
+
+            <!--ComboBox Section-->
+            <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
+                <StackPanel Spacing="12">
+                    <TextBlock Text="ComboBox" FontSize="18" FontWeight="SemiBold" />
+                    <ComboBox Width="200" HorizontalAlignment="Left" SelectedIndex="0">
+                        <ComboBoxItem Content="Option 1" />
+                        <ComboBoxItem Content="Option 2" />
+                        <ComboBoxItem Content="Option 3" />
+                        <ComboBoxItem Content="Option 4" />
+                    </ComboBox>
+                </StackPanel>
+            </Border>
+
+            <!--DataGrid Section-->
+            <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
+                <StackPanel Spacing="12">
+                    <TextBlock Text="DataGrid" FontSize="18" FontWeight="SemiBold" />
+                    <DataGrid Name="DemoDataGrid" Width="500" Height="200" HorizontalAlignment="Left"
+                              x:DataType="local:DemoItem">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="150" />
+                            <DataGridTextColumn Header="Age" Binding="{Binding Age}" Width="80" />
+                            <DataGridCheckBoxColumn Header="Active" Binding="{Binding IsActive}" Width="80" />
+                            <DataGridTextColumn Header="Role" Binding="{Binding Role}" Width="*" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </Border>
+
+            <!-- DatePicker Section -->
+            <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
+                <StackPanel Spacing="12">
+                    <TextBlock Text="DatePicker" FontSize="18" FontWeight="SemiBold" />
+                    <StackPanel Orientation="Horizontal" Spacing="16">
+                        <DatePicker Width="200" HorizontalAlignment="Left" />
+                        <Calendar />
+                        <CalendarDatePicker Width="200"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- ListBox Section -->
+            <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
+                <StackPanel Spacing="12">
+                    <TextBlock Text="ListBox" FontSize="18" FontWeight="SemiBold" />
+                    <ListBox Width="200" Height="150" HorizontalAlignment="Left" SelectionMode="Single">
+                        <ListBoxItem Content="Item One" />
+                        <ListBoxItem Content="Item Two" IsSelected="True" />
+                        <ListBoxItem Content="Item Three" />
+                        <ListBoxItem Content="Item Four" />
+                        <ListBoxItem Content="Item Five" />
+                        <ListBoxItem Content="Item Six" />
+                    </ListBox>
+                </StackPanel>
+            </Border>
+
+            <!-- Menu Section -->
+            <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
+                <StackPanel Spacing="12">
+                    <TextBlock Text="Menu" FontSize="18" FontWeight="SemiBold" />
+                    <Menu>
+                        <MenuItem Header="File">
+                            <MenuItem Header="New" />
+                            <MenuItem Header="Open" />
+                            <MenuItem Header="Save" />
+                            <Separator />
+                            <MenuItem Header="Exit" />
+                        </MenuItem>
+                        <MenuItem Header="Edit">
+                            <MenuItem Header="Cut" />
+                            <MenuItem Header="Copy" />
+                            <MenuItem Header="Paste" />
+                        </MenuItem>
+                        <MenuItem Header="Help">
+                            <MenuItem Header="About" />
+                        </MenuItem>
+                    </Menu>
+                </StackPanel>
+            </Border>
+
+            <!-- TabControl Section -->
+            <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
+                <StackPanel Spacing="12">
+                    <TextBlock Text="TabControl" FontSize="18" FontWeight="SemiBold" />
+                    <TabControl Width="400" Height="150" HorizontalAlignment="Left">
+                        <TabItem Header="General">
+                            <TextBlock Text="General settings content" Margin="8" />
+                        </TabItem>
+                        <TabItem Header="Advanced">
+                            <TextBlock Text="Advanced settings content" Margin="8" />
+                        </TabItem>
+                        <TabItem Header="About">
+                            <TextBlock Text="About this application" Margin="8" />
+                        </TabItem>
+                    </TabControl>
+                </StackPanel>
+            </Border>
+
+            <!-- TreeView Section -->
+            <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
+                <StackPanel Spacing="12">
+                    <TextBlock Text="TreeView" FontSize="18" FontWeight="SemiBold" />
+                    <TreeView Width="250" Height="200" HorizontalAlignment="Left">
+                        <TreeViewItem Header="Root">
+                            <TreeViewItem Header="Child 1">
+                                <TreeViewItem Header="Grandchild 1.1" />
+                                <TreeViewItem Header="Grandchild 1.2" />
+                            </TreeViewItem>
+                            <TreeViewItem Header="Child 2" />
+                            <TreeViewItem Header="Child 3" IsExpanded="True">
+                                <TreeViewItem Header="Grandchild 3.1" />
+                                <TreeViewItem Header="Grandchild 3.2" />
+                            </TreeViewItem>
+                        </TreeViewItem>
+                    </TreeView>
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </ScrollViewer>
+</Window>
