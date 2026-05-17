@@ -6,6 +6,7 @@
         xmlns:local="using:WidgetDesign.Demo"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
         x:Class="WidgetDesign.Demo.MainWindow"
+        Icon="avares://WidgetDesign.Demo/Assets/WidgetDesign.ico"
         WindowStartupLocation="CenterScreen"
         Title="WidgetDesign Demo"
         Width="800" Height="600">
