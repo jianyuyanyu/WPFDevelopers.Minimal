@@ -25,4 +25,30 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <AssemblyAttribute Include="Avalonia.Metadata.XmlnsDefinitionAttribute">
+      <_Parameter1>https://github.com/WPFDevelopersOrg/WidgetDesign.Avalonia</_Parameter1>
+      <_Parameter2>WidgetDesign.Avalonia</_Parameter2>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include="Avalonia.Metadata.XmlnsDefinitionAttribute">
+      <_Parameter1>https://github.com/WPFDevelopersOrg/WidgetDesign.Avalonia</_Parameter1>
+      <_Parameter2>WidgetDesign.Avalonia.Controls</_Parameter2>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include="Avalonia.Metadata.XmlnsDefinitionAttribute">
+      <_Parameter1>https://github.com/WPFDevelopersOrg/WidgetDesign.Avalonia</_Parameter1>
+      <_Parameter2>WidgetDesign.Avalonia.Converts</_Parameter2>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include="Avalonia.Metadata.XmlnsDefinitionAttribute">
+      <_Parameter1>https://github.com/WPFDevelopersOrg/WidgetDesign.Avalonia</_Parameter1>
+      <_Parameter2>WidgetDesign.Avalonia.Converters</_Parameter2>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include="Avalonia.Metadata.XmlnsDefinitionAttribute">
+      <_Parameter1>https://github.com/WPFDevelopersOrg/WidgetDesign.Avalonia</_Parameter1>
+      <_Parameter2>WidgetDesign.Avalonia.Themes</_Parameter2>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include="Avalonia.Metadata.XmlnsDefinitionAttribute">
+      <_Parameter1>https://github.com/WPFDevelopersOrg/WidgetDesign.Avalonia</_Parameter1>
+      <_Parameter2>WidgetDesign.Avalonia.Markup</_Parameter2>
+    </AssemblyAttribute>
+  </ItemGroup>
 </Project>
