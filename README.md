@@ -1,4 +1,4 @@
-<div align="center"><img src="demo/WidgetDesign.Demo/Assets/Resources/WidgetDesign.png"/></div> 
+<div align="center"><img src="demo/WidgetDesign.Demo/Assets/WidgetDesign.png"/></div> 
 
 
 ##  Welcome to WidgetDesign.Avalonia
