@@ -4,9 +4,6 @@
         <ResourceInclude Source="/Themes/Basic/ControlBasic.axaml"/>
         <ResourceInclude Source="/Themes/Basic/Light.Color.axaml"/>
         <ResourceInclude Source="/Themes/Basic/Animations.axaml"/>
-        <ResourceInclude Source="/Controls/PathIconEx/PathIconEx.axaml"/>
-        <ResourceInclude Source="/Controls/Badge/Badge.axaml"/>
-        <ResourceInclude Source="/Controls/Tag/Tag.axaml"/>
         <ResourceInclude Source="/Styles/ScrollBar.axaml"/>
         <ResourceInclude Source="/Styles/Buttons.axaml"/>
         <ResourceInclude Source="/Styles/DataGrid.axaml"/>
@@ -30,5 +27,9 @@
         <ResourceInclude Source="/Styles/RepeatButton.axaml"/>
         <ResourceInclude Source="/Styles/Thumb.axaml"/>
         <ResourceInclude Source="/Styles/Window.axaml"/>
+        <ResourceInclude Source="/Themes/Badge.axaml"/>
+        <ResourceInclude Source="/Themes/PathIconEx.axaml"/>
+        <ResourceInclude Source="/Themes/Tag.axaml"/>
+        <ResourceInclude Source="/Themes/Toast.axaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
