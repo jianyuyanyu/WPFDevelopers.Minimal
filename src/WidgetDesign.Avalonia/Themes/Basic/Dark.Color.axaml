@@ -45,4 +45,6 @@
     <Color x:Key="WD.DangerMouseOverColor">#3A2020</Color>
     <SolidColorBrush x:Key="WD.DangerMouseOverBrush" Color="{StaticResource WD.DangerMouseOverColor}" />
 
+    <BoxShadows x:Key="WD.MessageBoxShadow">inset 0 0 0 1 #1AFFFFFF, 0 4 14 #40000000</BoxShadows>
+
 </ResourceDictionary>
