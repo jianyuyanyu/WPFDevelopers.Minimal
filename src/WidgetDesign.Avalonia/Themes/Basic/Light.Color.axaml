@@ -34,4 +34,6 @@
     <Color x:Key="WD.ChartFillColor">#6E7079</Color>
     <SolidColorBrush x:Key="WD.ChartFillBrush" Color="{StaticResource WD.ChartFillColor}" />
 
+    <BoxShadows x:Key="WD.MessageBoxShadow">0 0 1 #4A000000, 0 4 14 #1A000000</BoxShadows>
+
 </ResourceDictionary>
