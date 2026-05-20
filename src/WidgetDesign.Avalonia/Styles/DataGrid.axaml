@@ -35,7 +35,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     
     <ControlTheme x:Key="{x:Type DataGridColumnHeader}" TargetType="DataGridColumnHeader">
-        <Setter Property="Background" Value="{DynamicResource WD.BaseMoveBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -88,9 +88,6 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
         </Setter>
         <Style Selector="^:focus-visible /template/ Panel#FocusVisual">
             <Setter Property="IsVisible" Value="True" />
-        </Style>
-        <Style Selector="^:pointerover /template/ Border#HeaderBackground">
-            <Setter Property="Background" Value="{DynamicResource WD.BaseMoveBrush}" />
         </Style>
         <Style Selector="^:sortascending /template/ PathIcon#SortIcon">
             <Setter Property="IsVisible" Value="True" />
