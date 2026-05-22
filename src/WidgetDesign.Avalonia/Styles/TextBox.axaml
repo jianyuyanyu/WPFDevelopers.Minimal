@@ -1,7 +1,8 @@
-<ResourceDictionary xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converts="using:WidgetDesign.Avalonia.Converts">
 
-    
+    <converts:PasswordAndTextToVisibilityConverter x:Key="WD.PasswordAndTextToVisibilityConverter" />
     <ControlTheme x:Key="{x:Type TextBox}" TargetType="TextBox">
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
@@ -12,107 +13,95 @@
         <Setter Property="MinHeight" Value="{DynamicResource WD.Height}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="CaretBrush" Value="{DynamicResource WD.PrimaryBrush}" />
-        <Setter Property="SelectionBrush" Value="{DynamicResource WD.WindowBorderBrush}" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
         <Setter Property="Template">
-            <ControlTemplate>
-                <Border Name="border"
+            <ControlTemplate TargetType="TextBox">
+                <Border Name="PART_Border"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{TemplateBinding CornerRadius}">
-                    <Grid>
-                        <TextBlock Name="PART_Watermark"
-                                   Margin="{TemplateBinding Padding}"
-                                   VerticalAlignment="Center"
-                                   Foreground="{DynamicResource WD.PlaceholderTextBrush}"
-                                   Text="{TemplateBinding Watermark}"
-                                   TextTrimming="CharacterEllipsis" />
+                    <Grid ColumnDefinitions="*,Auto">
                         <ScrollViewer Name="PART_ContentHost"
+                                      Grid.Column="0"
+                                      Margin="{TemplateBinding Padding}"
                                       HorizontalScrollBarVisibility="Hidden"
                                       VerticalScrollBarVisibility="Hidden">
                             <Panel>
+                                <TextBlock Name="PART_Watermark"
+                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                           Foreground="{DynamicResource WD.PlaceholderTextBrush}"
+                                           Text="{TemplateBinding Watermark}"
+                                           TextTrimming="CharacterEllipsis">
+                                    <TextBlock.IsVisible>
+                                        <Binding Path="Text" RelativeSource="{RelativeSource TemplatedParent}" Converter="{StaticResource WD.StringIsEmptyConverter}" />
+                                    </TextBlock.IsVisible>
+                                </TextBlock>
                                 <TextPresenter Name="PART_TextPresenter"
-                                               Margin="{TemplateBinding Padding}"
-                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                                CaretBrush="{TemplateBinding CaretBrush}"
                                                SelectionBrush="{TemplateBinding SelectionBrush}"
                                                SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+                                               SelectionStart="{TemplateBinding SelectionStart}"
+                                               SelectionEnd="{TemplateBinding SelectionEnd}"
+                                               CaretIndex="{TemplateBinding CaretIndex}"
                                                Text="{TemplateBinding Text, Mode=TwoWay}"
                                                PasswordChar="{TemplateBinding PasswordChar}"
                                                RevealPassword="{TemplateBinding RevealPassword}" />
                             </Panel>
+                            <ScrollViewer.Styles>
+                                <Style Selector="ScrollContentPresenter#PART_ContentPresenter">
+                                    <Setter Property="Cursor" Value="Ibeam" />
+                                </Style>
+                            </ScrollViewer.Styles>
                         </ScrollViewer>
                         <ToggleButton Name="PART_RevealButton"
-                                      Width="20" Height="20"
-                                      Margin="0,0,4,0"
+                                      Grid.Column="1"
                                       HorizontalAlignment="Right"
                                       VerticalAlignment="Center"
-                                      Background="Transparent"
                                       BorderThickness="0"
+                                      Width="20"
+                                      Height="20"
                                       Padding="0"
-                                      IsVisible="False"
+                                      Margin="0,0,6,0"
                                       IsChecked="{Binding RevealPassword, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+                            <ToggleButton.IsVisible>
+                                <MultiBinding Converter="{StaticResource WD.PasswordAndTextToVisibilityConverter}">
+                                    <Binding Path="PasswordChar" RelativeSource="{RelativeSource TemplatedParent}" />
+                                    <Binding Path="Text" RelativeSource="{RelativeSource TemplatedParent}" />
+                                </MultiBinding>
+                            </ToggleButton.IsVisible>
                             <Panel>
-                                <Path Name="PART_EyeIcon"
-                                      Width="14" Height="10"
-                                      Stroke="{DynamicResource WD.RegularTextBrush}"
-                                      StrokeThickness="1.5"
-                                      Stretch="Uniform"
-                                      Fill="Transparent"
-                                      Data="M 1,5 Q 7,0 13,5 Q 7,10 1,5 M 7,3.5 A 1.5,1.5 0 1,0 7,6.5 A 1.5,1.5 0 1,0 7,3.5" />
-                                <Path Name="PART_EyeOffIcon"
-                                      Width="14" Height="10"
-                                      Stroke="{DynamicResource WD.RegularTextBrush}"
-                                      StrokeThickness="1.5"
-                                      Stretch="Uniform"
-                                      Fill="Transparent"
-                                      IsVisible="False"
-                                      Data="M 1,5 Q 7,0 13,5 M 3,3 L 11,7 M 7,3.5 A 1.5,1.5 0 1,0 7,6.5 A 1.5,1.5 0 1,0 7,3.5 M 2,2 L 12,8" />
+                                <PathIcon Name="PART_EyeIcon"
+                                          Width="12" 
+                                          Foreground="{DynamicResource WD.RegularTextBrush}"
+                                          Data="{StaticResource WD.EyeGeometry}"
+                                          IsVisible="{Binding #PART_RevealButton.IsChecked}" />
+                                <PathIcon Name="PART_EyeOffIcon"
+                                          Width="12" 
+                                          Foreground="{DynamicResource WD.RegularTextBrush}"
+                                          Data="{StaticResource WD.EyeOffGeometry}"
+                                          IsVisible="{Binding #PART_RevealButton.IsChecked, Converter={x:Static BoolConverters.Not}}" />
                             </Panel>
                         </ToggleButton>
                     </Grid>
                 </Border>
             </ControlTemplate>
         </Setter>
-
-        
-        <Style Selector="^ /template/ TextBlock#PART_Watermark">
-            <Setter Property="IsVisible" Value="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.StringIsEmptyConverter}}" />
-        </Style>
-
-        
         <Style Selector="^:focus">
-            <Style Selector="^ /template/ Border#border">
+            <Style Selector="^ /template/ Border#PART_Border">
                 <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
             </Style>
         </Style>
-
-        
         <Style Selector="^:pointerover">
-            <Style Selector="^ /template/ Border#border">
+            <Style Selector="^ /template/ Border#PART_Border">
                 <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
             </Style>
         </Style>
-
-        
         <Style Selector="^:disabled">
             <Setter Property="Opacity" Value="{DynamicResource WD.EnabledOpacity}" />
         </Style>
-
-        
-        <Style Selector="^:not(:empty) /template/ ToggleButton#PART_RevealButton">
-            <Setter Property="IsVisible" Value="{Binding PasswordChar, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource WD.NullToVisibilityConverter_Inverse}}" />
-        </Style>
-
-        
-        <Style Selector="^ /template/ ToggleButton#PART_RevealButton:checked">
-            <Style Selector="^ /template/ Path#PART_EyeIcon">
-                <Setter Property="IsVisible" Value="False" />
-            </Style>
-            <Style Selector="^ /template/ Path#PART_EyeOffIcon">
-                <Setter Property="IsVisible" Value="True" />
-            </Style>
-        </Style>
     </ControlTheme>
-
 </ResourceDictionary>
