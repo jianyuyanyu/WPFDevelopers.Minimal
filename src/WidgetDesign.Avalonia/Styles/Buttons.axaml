@@ -1,6 +1,5 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
 	
     <ControlTheme x:Key="wd-primary" TargetType="Button">
         <Setter Property="Focusable" Value="False" />
@@ -39,7 +38,6 @@
             </Style>
         </Style>
     </ControlTheme>
-
     
     <ControlTheme x:Key="wd-default" TargetType="Button">
         <Setter Property="Focusable" Value="False" />
@@ -75,7 +73,6 @@
             <Setter Property="Background" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
         </Style>
     </ControlTheme>
-
     
     <ControlTheme x:Key="wd-normal" TargetType="Button">
         <Setter Property="Focusable" Value="False" />
@@ -110,7 +107,6 @@
             <Setter Property="Background" Value="{DynamicResource WD.LighterBrush}" />
         </Style>
     </ControlTheme>
-
     
     <ControlTheme x:Key="wd-success" TargetType="Button">
         <Setter Property="Focusable" Value="False" />
@@ -329,7 +325,6 @@
             </Style>
         </Style>
     </ControlTheme>
-
     
     <ControlTheme x:Key="wd-path" TargetType="Button">
         <Setter Property="Focusable" Value="False" />
@@ -356,5 +351,4 @@
             </Style>
         </Style>
     </ControlTheme>
-
 </ResourceDictionary>
