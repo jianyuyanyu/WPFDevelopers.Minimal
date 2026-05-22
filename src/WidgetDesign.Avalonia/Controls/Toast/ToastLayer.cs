@@ -1,7 +1,6 @@
-using Avalonia;
+﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Layout;
-using Avalonia.VisualTree;
 
 namespace WidgetDesign.Avalonia.Controls
 {
