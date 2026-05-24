@@ -9,7 +9,6 @@
         <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
         <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
         <Setter Property="CornerRadius" Value="{DynamicResource WD.CornerRadius}" />
-        <Setter Property="MinHeight" Value="32" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="IsTodayHighlighted" Value="True" />
