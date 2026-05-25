@@ -74,7 +74,7 @@
                                    VerticalAlignment="Center"
                                    Margin="4,0,0,0">
                             <TextBlock.Text>
-                                <MultiBinding Converter="{StaticResource StringFormatConverter}">
+                                <MultiBinding Converter="{StaticResource WD.StringFormatConverter}">
                                     <TemplateBinding Property="ProgressTextFormat" />
                                     <TemplateBinding Property="Value" />
                                     <TemplateBinding Property="Percentage" />
