@@ -1,4 +1,4 @@
-<ResourceDictionary xmlns="https://github.com/avaloniaui"
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     
@@ -13,7 +13,7 @@
     <SolidColorBrush x:Key="WD.BackgroundBrush" Color="{StaticResource WD.BackgroundColor}" />
 
     <Color x:Key="WD.WindowBorderColor">#202020</Color>
-    <SolidColorBrush x:Key="WD.WindowBorderBrush" Color="{StaticResource WD.WindowBorderColor}" />
+    <SolidColorBrush x:Key="WD.WindowBorderBrush" Color="{DynamicResource WD.WindowBorderColor}" />
 
     <Color x:Key="WD.BaseColor">#202020</Color>
     <SolidColorBrush x:Key="WD.BaseBrush" Color="{StaticResource WD.BaseColor}" />
