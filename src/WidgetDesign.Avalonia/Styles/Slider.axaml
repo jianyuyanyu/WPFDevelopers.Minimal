@@ -178,7 +178,7 @@
             </Setter>
         </Style>
         <Style Selector="^:vertical /template/ Thumb#PART_Thumb">
-            <Setter Property="Margin" Value="0,-3" />
+            <Setter Property="Margin" Value="0.5,0,0,-1" />
         </Style>
         <Style Selector="^[TickPlacement=TopLeft] /template/ TickBar#PART_TopTick">
             <Setter Property="IsVisible" Value="True" />
