@@ -3,6 +3,23 @@
                     xmlns:converts="using:WidgetDesign.Avalonia.Converts">
 
     <converts:PasswordAndTextToVisibilityConverter x:Key="WD.PasswordAndTextToVisibilityConverter" />
+    <converts:CultureTextConverter x:Key="WD.CultureTextConverter" />
+
+    <MenuFlyout x:Key="WD.DefaultTextBoxContextFlyout" Placement="Bottom">
+        <MenuItem Command="{Binding $parent[TextBox].Cut}"
+                  Header="{Binding Converter={StaticResource WD.CultureTextConverter}, ConverterParameter=Cut}"
+                  InputGesture="{x:Static TextBox.CutGesture}"
+                  IsEnabled="{Binding $parent[TextBox].CanCut}" />
+        <MenuItem Command="{Binding $parent[TextBox].Copy}"
+                  Header="{Binding Converter={StaticResource WD.CultureTextConverter}, ConverterParameter=Copy}"
+                  InputGesture="{x:Static TextBox.CopyGesture}"
+                  IsEnabled="{Binding $parent[TextBox].CanCopy}" />
+        <MenuItem Command="{Binding $parent[TextBox].Paste}"
+                  Header="{Binding Converter={StaticResource WD.CultureTextConverter}, ConverterParameter=Paste}"
+                  InputGesture="{x:Static TextBox.PasteGesture}"
+                  IsEnabled="{Binding $parent[TextBox].CanPaste}" />
+    </MenuFlyout>
+
     <ControlTheme x:Key="{x:Type TextBox}" TargetType="TextBox">
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
@@ -10,10 +27,10 @@
         <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryTextBrush}" />
         <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
         <Setter Property="CornerRadius" Value="{DynamicResource WD.CornerRadius}" />
-        <Setter Property="MinHeight" Value="{DynamicResource WD.Height}" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="CaretBrush" Value="{DynamicResource WD.PrimaryBrush}" />
         <Setter Property="SelectionBrush" Value="{DynamicResource WD.PrimaryMouseOverBrush}" />
+        <Setter Property="ContextFlyout" Value="{StaticResource WD.DefaultTextBoxContextFlyout}" />
         <Setter Property="Template">
             <ControlTemplate TargetType="TextBox">
                 <Border Name="PART_Border"
@@ -21,7 +38,7 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="{TemplateBinding CornerRadius}">
-                    <Grid ColumnDefinitions="*,Auto">
+                    <Grid ColumnDefinitions="*,Auto,Auto">
                         <ScrollViewer Name="PART_ContentHost"
                                       Grid.Column="0"
                                       Margin="{TemplateBinding Padding}"
@@ -57,8 +74,27 @@
                                 </Style>
                             </ScrollViewer.Styles>
                         </ScrollViewer>
+                        <Button
+                        Name="PART_ClearButton"
+                        Grid.Column="1"
+                        Theme="{StaticResource wd-path}"
+                        IsVisible="False"
+                        VerticalAlignment="Center"
+                        Command="{Binding $parent[TextBox].Clear}"
+                        Focusable="False">
+                            <Button.Styles>
+                                <Style Selector="Button:pointerover PathIcon">
+                                    <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
+                                </Style>
+                            </Button.Styles>
+                            <PathIcon
+                            Name="PART_PathIconClert"
+                            Width="12"
+                            Foreground="{DynamicResource WD.RegularTextBrush}"
+                            Data="{StaticResource WD.ErrorGeometry}" />
+                        </Button>
                         <ToggleButton Name="PART_RevealButton"
-                                      Grid.Column="1"
+                                      Grid.Column="2"
                                       HorizontalAlignment="Right"
                                       VerticalAlignment="Center"
                                       BorderThickness="0"
@@ -67,6 +103,17 @@
                                       Padding="0"
                                       Margin="0,0,6,0"
                                       IsChecked="{Binding RevealPassword, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+                            <ToggleButton.Styles>
+                                <Style Selector="ToggleButton:pointerover PathIcon">
+                                    <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
+                                </Style>
+                                <Style Selector="ToggleButton:pointerover /template/ Border#PART_Border">
+                                    <Setter Property="Background" Value="Transparent" />
+                                </Style>
+                                <Style Selector="ToggleButton:checked /template/ Border#PART_Border">
+                                    <Setter Property="Background" Value="Transparent" />
+                                </Style>
+                            </ToggleButton.Styles>
                             <ToggleButton.IsVisible>
                                 <MultiBinding Converter="{StaticResource WD.PasswordAndTextToVisibilityConverter}">
                                     <Binding Path="PasswordChar" RelativeSource="{RelativeSource TemplatedParent}" />
@@ -75,12 +122,12 @@
                             </ToggleButton.IsVisible>
                             <Panel>
                                 <PathIcon Name="PART_EyeIcon"
-                                          Width="12" 
+                                          Width="12"
                                           Foreground="{DynamicResource WD.RegularTextBrush}"
                                           Data="{StaticResource WD.EyeGeometry}"
                                           IsVisible="{Binding #PART_RevealButton.IsChecked}" />
                                 <PathIcon Name="PART_EyeOffIcon"
-                                          Width="12" 
+                                          Width="12"
                                           Foreground="{DynamicResource WD.RegularTextBrush}"
                                           Data="{StaticResource WD.EyeOffGeometry}"
                                           IsVisible="{Binding #PART_RevealButton.IsChecked, Converter={x:Static BoolConverters.Not}}" />
@@ -102,6 +149,15 @@
         </Style>
         <Style Selector="^:disabled">
             <Setter Property="Opacity" Value="{DynamicResource WD.EnabledOpacity}" />
+        </Style>
+        <Style Selector="^.IsClear">
+            <Style Selector="^[AcceptsReturn=False][IsReadOnly=False]:not(:empty)">
+                <Style Selector="^:pointerover,^:focus">
+                    <Style Selector="^ /template/ Button#PART_ClearButton">
+                        <Setter Property="IsVisible" Value="True" />
+                    </Style>
+                </Style>
+            </Style>
         </Style>
     </ControlTheme>
 </ResourceDictionary>
