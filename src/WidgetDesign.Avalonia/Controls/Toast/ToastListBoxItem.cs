@@ -1,6 +1,11 @@
-using Avalonia;
+﻿using Avalonia;
+using Avalonia.Animation;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
+using Avalonia.Controls.Shapes;
+using Avalonia.Interactivity;
+using Avalonia.Media;
+using Avalonia.Styling;
 using Avalonia.Threading;
 
 namespace WidgetDesign.Avalonia.Controls
@@ -9,6 +14,9 @@ namespace WidgetDesign.Avalonia.Controls
     {
         private const double DismissDelayMs = 10000;
         private CancellationTokenSource? _dismissToken;
+        private Rectangle? _rectangle;
+        private Animation? _currentAnimation;
+        private bool _isClosedByButton = false;
 
         public static readonly StyledProperty<ToastIcon> ToastIconProperty =
             AvaloniaProperty.Register<ToastListBoxItem, ToastIcon>(nameof(ToastIcon));
@@ -48,11 +56,19 @@ namespace WidgetDesign.Avalonia.Controls
         protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
         {
             base.OnApplyTemplate(e);
+            _rectangle = e.NameScope.Find<Rectangle>("PART_Rectangle");
+
             var closeBtn = e.NameScope.Find<Button>("PART_CloseButton");
             if (closeBtn != null)
             {
-                closeBtn.Click += (_, _) => Close();
+                closeBtn.Click += (_, _) => CloseByButton();
             }
+        }
+
+        protected override void OnLoaded(RoutedEventArgs e)
+        {
+            base.OnLoaded(e);
+            Close();
         }
 
         protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
@@ -85,15 +101,74 @@ namespace WidgetDesign.Avalonia.Controls
             }, CancellationToken.None);
         }
 
-        public void Close()
+        public void Close(bool isAnimation = true)
         {
             _dismissToken?.Cancel();
             _dismissToken = null;
-            RemoveSelf();
+            if (_rectangle != null && isAnimation && !_isClosedByButton)
+            {
+                _rectangle.RenderTransform = new ScaleTransform(1, 1);
+                _rectangle.RenderTransformOrigin = new RelativePoint(0, 0.5, RelativeUnit.Relative);
+                var anim = new Animation
+                {
+                    Duration = TimeSpan.FromSeconds(10),
+                    FillMode = FillMode.Forward,
+                    Children =
+                {
+                    new KeyFrame
+                    {
+                        Cue = new Cue(0d),
+                        Setters = { new Setter { Property = ScaleTransform.ScaleXProperty, Value = 1d } }
+                    },
+                    new KeyFrame
+                    {
+                        Cue = new Cue(1d),
+                        Setters = { new Setter { Property = ScaleTransform.ScaleXProperty, Value = 0d } }
+                    }
+                }
+                };
+                _currentAnimation = anim;
+                _ = AnimateAsync(anim, _rectangle);
+            }
+            else
+            {
+                RemoveSelf();
+            }
+        }
+
+        private void CloseByButton()
+        {
+            _isClosedByButton = true;
+
+            if (_currentAnimation != null)
+            {
+                if (_rectangle != null)
+                {
+                    _rectangle.RenderTransform = null;
+                }
+                _currentAnimation = null;
+            }
+
+            Close(false);
+        }
+
+        private async Task AnimateAsync(Animation anim, Animatable target)
+        {
+            try
+            {
+                await anim.RunAsync(target);
+                RemoveSelf();
+            }
+            catch
+            {
+                RemoveSelf();
+            }
         }
 
         private void RemoveSelf()
         {
+            _isClosedByButton = false;
+            _currentAnimation = null;
             (Parent as Panel)?.Children.Remove(this);
         }
     }
