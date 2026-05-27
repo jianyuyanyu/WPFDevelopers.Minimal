@@ -10,10 +10,10 @@
 
     <!-- PrimaryColor -->
     <Color x:Key="WD.PrimaryColor">#409EFF</Color>
-    <SolidColorBrush x:Key="WD.PrimaryBrush" Color="{StaticResource WD.PrimaryColor}" />
+    <SolidColorBrush x:Key="WD.PrimaryBrush" Color="{DynamicResource WD.PrimaryColor}" />
 
     <Color x:Key="WD.PrimaryMouseOverColor">#EBF4FF</Color>
-    <SolidColorBrush x:Key="WD.PrimaryMouseOverBrush" Color="{StaticResource WD.PrimaryMouseOverColor}" />
+    <SolidColorBrush x:Key="WD.PrimaryMouseOverBrush" Color="{DynamicResource WD.PrimaryMouseOverColor}" />
 
     <!-- SuccessColor -->
     <Color x:Key="WD.SuccessColor">#13CE67</Color>
