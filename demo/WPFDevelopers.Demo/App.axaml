@@ -1,0 +1,8 @@
+﻿<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers.Avalonia"
+             x:Class="WPFDevelopers.Demo.App">
+    <Application.Resources>
+        <wd:Resources Theme="Dark"/>
+    </Application.Resources>
+</Application>
