@@ -27,7 +27,6 @@
         <ResourceInclude Source="/Styles/RepeatButton.axaml"/>
         <ResourceInclude Source="/Styles/Thumb.axaml"/>
         <ResourceInclude Source="/Styles/Window.axaml"/>
-        <ResourceInclude Source="/Themes/Badge.axaml"/>
         <ResourceInclude Source="/Themes/PathIconEx.axaml"/>
         <ResourceInclude Source="/Themes/Tag.axaml"/>
         <ResourceInclude Source="/Themes/Toast.axaml"/>
