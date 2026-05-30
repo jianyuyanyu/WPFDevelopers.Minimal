@@ -1,0 +1,200 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ControlTheme x:Key="{x:Type Slider}" TargetType="Slider">
+        <Style Selector="^:horizontal /template/ RepeatButton">
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Grid>
+                        <Border Name="FocusTarget"
+                                Margin="0,-10"
+                                Background="Transparent" />
+                        <Border Name="TrackBackground"
+                                Height="4"
+                                VerticalAlignment="Center"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="{DynamicResource WD.CornerRadius}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+
+        <Style Selector="^:vertical /template/ RepeatButton">
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Grid>
+                        <Border Name="FocusTarget"
+                                Margin="-10,0"
+                                Background="Transparent" />
+                        <Border Name="TrackBackground"
+                                Width="4"
+                                HorizontalAlignment="Center"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="{DynamicResource WD.CornerRadius}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+        
+        <Style Selector="^ /template/ Thumb#PART_Thumb">
+            <Setter Property="Width" Value="14" />
+            <Setter Property="Height" Value="14" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Margin" Value="-3,0" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}"
+                            Background="White"
+                            BorderBrush="{DynamicResource WD.PrimaryBrush}"
+                            BorderThickness="1.5"
+                            CornerRadius="7" />
+                </ControlTemplate>
+            </Setter>
+        </Style>
+        
+        <Style Selector="^ /template/ Thumb#PART_Thumb:pointerover">
+            <Setter Property="BorderBrush" Value="{DynamicResource WD.LightBrush}" />
+        </Style>
+        
+        <Style Selector="^ /template/ Thumb#PART_Thumb:pressed">
+            <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
+        </Style>
+        
+        <Style Selector="^:horizontal">
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Grid Name="PART_Container"
+                          Margin="{TemplateBinding Padding}"
+                          Background="Transparent">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <TickBar Name="PART_TopTick"
+                                 Grid.Row="0"
+                                 Height="4" Margin="0,0,0,4"
+                                 VerticalAlignment="Bottom"
+                                 Fill="{TemplateBinding Foreground}"
+                                 IsVisible="False"
+                                 Maximum="{TemplateBinding Maximum}"
+                                 Minimum="{TemplateBinding Minimum}"
+                                 Orientation="{TemplateBinding Orientation}"
+                                 Placement="Top"
+                                 IsDirectionReversed="{TemplateBinding IsDirectionReversed}" />
+                        <TickBar Name="PART_BottomTick"
+                                 Grid.Row="2"
+                                 Height="4" Margin="0,4,0,0"
+                                 VerticalAlignment="Top"
+                                 Fill="{TemplateBinding Foreground}"
+                                 IsVisible="False"
+                                 Maximum="{TemplateBinding Maximum}"
+                                 Minimum="{TemplateBinding Minimum}"
+                                 Orientation="{TemplateBinding Orientation}"
+                                 Placement="Bottom"
+                                 IsDirectionReversed="{TemplateBinding IsDirectionReversed}" />
+                        <Track Name="PART_Track"
+                               Grid.Row="1"
+                               Minimum="{TemplateBinding Minimum}"
+                               Maximum="{TemplateBinding Maximum}"
+                               Value="{TemplateBinding Value, Mode=TwoWay}"
+                               IsDirectionReversed="{TemplateBinding IsDirectionReversed}"
+                               Orientation="Horizontal">
+                            <Track.DecreaseButton>
+                                <RepeatButton Name="PART_DecreaseButton"
+                                              Background="{DynamicResource WD.PrimaryBrush}"
+                                              Focusable="False" />
+                            </Track.DecreaseButton>
+                            <Track.IncreaseButton>
+                                <RepeatButton Name="PART_IncreaseButton"
+                                              Background="{DynamicResource WD.BaseBrush}"
+                                              Focusable="False" />
+                            </Track.IncreaseButton>
+                            <Thumb Name="PART_Thumb" />
+                        </Track>
+                    </Grid>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+        
+        <Style Selector="^:vertical">
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Grid Name="PART_Container"
+                          Margin="{TemplateBinding Padding}"
+                          Background="Transparent">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TickBar Name="PART_TopTick"
+                                 Grid.Column="0"
+                                 Width="4" Margin="0,0,4,0"
+                                 HorizontalAlignment="Right"
+                                 Fill="{TemplateBinding Foreground}"
+                                 IsVisible="False"
+                                 Maximum="{TemplateBinding Maximum}"
+                                 Minimum="{TemplateBinding Minimum}"
+                                 Orientation="{TemplateBinding Orientation}"
+                                 Placement="Left"
+                                 IsDirectionReversed="{TemplateBinding IsDirectionReversed}" />
+                        <TickBar Name="PART_BottomTick"
+                                 Grid.Column="2"
+                                 Width="4" Margin="4,0,0,0"
+                                 HorizontalAlignment="Left"
+                                 Fill="{TemplateBinding Foreground}"
+                                 IsVisible="False"
+                                 Maximum="{TemplateBinding Maximum}"
+                                 Minimum="{TemplateBinding Minimum}"
+                                 Orientation="{TemplateBinding Orientation}"
+                                 Placement="Right"
+                                 IsDirectionReversed="{TemplateBinding IsDirectionReversed}" />
+                        <Track Name="PART_Track"
+                               Grid.Column="1"
+                               Minimum="{TemplateBinding Minimum}"
+                               Maximum="{TemplateBinding Maximum}"
+                               Value="{TemplateBinding Value, Mode=TwoWay}"
+                               IsDirectionReversed="{TemplateBinding IsDirectionReversed}"
+                               Orientation="Vertical">
+                            <Track.DecreaseButton>
+                                <RepeatButton Name="PART_DecreaseButton"
+                                              Background="{DynamicResource WD.PrimaryBrush}"
+                                              Focusable="False" />
+                            </Track.DecreaseButton>
+                            <Track.IncreaseButton>
+                                <RepeatButton Name="PART_IncreaseButton"
+                                              Background="{DynamicResource WD.BaseBrush}"
+                                              Focusable="False" />
+                            </Track.IncreaseButton>
+                            <Thumb Name="PART_Thumb" />
+                        </Track>
+                    </Grid>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+        <Style Selector="^:vertical /template/ Thumb#PART_Thumb">
+            <Setter Property="Margin" Value="0.5,0,0,-1" />
+        </Style>
+        <Style Selector="^[TickPlacement=TopLeft] /template/ TickBar#PART_TopTick">
+            <Setter Property="IsVisible" Value="True" />
+        </Style>
+        <Style Selector="^[TickPlacement=TopLeft] /template/ TickBar#PART_BottomTick">
+            <Setter Property="IsVisible" Value="False" />
+        </Style>
+        <Style Selector="^[TickPlacement=BottomRight] /template/ TickBar#PART_BottomTick">
+            <Setter Property="IsVisible" Value="True" />
+        </Style>
+        <Style Selector="^[TickPlacement=BottomRight] /template/ TickBar#PART_TopTick">
+            <Setter Property="IsVisible" Value="False" />
+        </Style>
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="{DynamicResource WD.EnabledOpacity}" />
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>
