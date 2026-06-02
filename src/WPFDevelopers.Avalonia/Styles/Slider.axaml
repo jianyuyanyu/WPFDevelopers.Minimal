@@ -1,5 +1,5 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <ControlTheme x:Key="{x:Type Slider}" TargetType="Slider">
         <Style Selector="^:horizontal /template/ RepeatButton">
@@ -35,13 +35,11 @@
                 </ControlTemplate>
             </Setter>
         </Style>
-        
         <Style Selector="^ /template/ Thumb#PART_Thumb">
             <Setter Property="Width" Value="14" />
             <Setter Property="Height" Value="14" />
             <Setter Property="Cursor" Value="Hand" />
             <Setter Property="Focusable" Value="False" />
-            <Setter Property="Margin" Value="-3,0" />
             <Setter Property="Template">
                 <ControlTemplate>
                     <Border Width="{TemplateBinding Width}"
@@ -53,15 +51,15 @@
                 </ControlTemplate>
             </Setter>
         </Style>
-        
+
         <Style Selector="^ /template/ Thumb#PART_Thumb:pointerover">
             <Setter Property="BorderBrush" Value="{DynamicResource WD.LightBrush}" />
         </Style>
-        
+
         <Style Selector="^ /template/ Thumb#PART_Thumb:pressed">
             <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
         </Style>
-        
+
         <Style Selector="^:horizontal">
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Template">
@@ -119,7 +117,7 @@
                 </ControlTemplate>
             </Setter>
         </Style>
-        
+
         <Style Selector="^:vertical">
             <Setter Property="Focusable" Value="False" />
             <Setter Property="Template">
@@ -171,14 +169,20 @@
                                               Background="{DynamicResource WD.BaseBrush}"
                                               Focusable="False" />
                             </Track.IncreaseButton>
-                            <Thumb Name="PART_Thumb" />
+                            <Thumb Name="PART_Thumb"/>
                         </Track>
                     </Grid>
                 </ControlTemplate>
             </Setter>
         </Style>
+        <!--<Style Selector="^:horizontal /template/ Thumb#PART_Thumb">
+            <Setter Property="Margin" Value="0,0,1,0" />
+        </Style>-->
+        <!--<Style Selector="^:vertical /template/ Thumb#PART_Thumb">
+        <Setter Property="Margin" Value="0.5,0,0,-1" />
+        </Style>-->
         <Style Selector="^:vertical /template/ Thumb#PART_Thumb">
-            <Setter Property="Margin" Value="0.5,0,0,-1" />
+            <Setter Property="Margin" Value="0.5,0,0,0" />
         </Style>
         <Style Selector="^[TickPlacement=TopLeft] /template/ TickBar#PART_TopTick">
             <Setter Property="IsVisible" Value="True" />
