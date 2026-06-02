@@ -1,0 +1,97 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ControlTheme x:Key="WD.NumericSpinner" TargetType="ButtonSpinner">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Name="PART_Border"
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{DynamicResource WD.CornerRadius}">
+                    <DockPanel>
+                        <UniformGrid Name="PART_SpinnerPanel"
+                                     DockPanel.Dock="Right"
+                                     IsVisible="{TemplateBinding ShowButtonSpinner}"
+                                     Rows="2"
+                                     Margin="0,0,4,0"
+                                     VerticalAlignment="Center">
+                            <RepeatButton Name="PART_IncreaseButton"
+                                          Width="14" Height="10"
+                                          BorderThickness="0"
+                                          Background="Transparent">
+                                <PathIcon Data="{StaticResource WD.UpGeometry}" Width="10" Height="10" />
+                            </RepeatButton>
+                            <RepeatButton Name="PART_DecreaseButton"
+                                          Width="14" Height="10"
+                                          BorderThickness="0"
+                                          Background="Transparent">
+                                <PathIcon Data="{StaticResource WD.DownGeometry}" Width="10" Height="10" />
+                            </RepeatButton>
+                        </UniformGrid>
+                        <ContentPresenter Name="PART_ContentPresenter"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}" />
+                    </DockPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+    <ControlTheme x:Key="{x:Type NumericUpDown}" TargetType="NumericUpDown">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{DynamicResource WD.BaseBrush}" />
+        <Setter Property="Background" Value="{DynamicResource WD.BackgroundBrush}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource WD.CornerRadius}" />
+        <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Name="PART_Border"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                    <ButtonSpinner Name="PART_Spinner"
+                                   AllowSpin="{TemplateBinding AllowSpin}"
+                                   ShowButtonSpinner="{TemplateBinding ShowButtonSpinner}"
+                                   Theme="{StaticResource WD.NumericSpinner}">
+                        <TextBox Name="PART_TextBox"
+                                 Padding="0"
+                                 Margin="{TemplateBinding Padding}"
+                                 BorderThickness="0"
+                                 Background="Transparent"
+                                 CornerRadius="0"
+                                 MinHeight="0"
+                                 Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                                 TextAlignment="{TemplateBinding TextAlignment}"
+                                 Watermark="{TemplateBinding Watermark}"
+                                 IsReadOnly="{TemplateBinding IsReadOnly}"
+                                 AcceptsReturn="False" />
+                    </ButtonSpinner>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:focus /template/ Border#PART_Border">
+            <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
+        </Style>
+        <Style Selector="^:pointerover /template/ Border#PART_Border">
+            <Setter Property="BorderBrush" Value="{DynamicResource WD.PrimaryBrush}" />
+        </Style>
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="{DynamicResource WD.EnabledOpacity}" />
+        </Style>
+    </ControlTheme>
+
+</ResourceDictionary>
