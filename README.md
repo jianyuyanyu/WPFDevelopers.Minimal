@@ -1,4 +1,4 @@
-<div align="center"><img src="demo/WPFDevelopers.Demo/Assets/WPFDevelopers.ico"/></div> 
+<div align="center"><img src="https://github.com/WPFDevelopersOrg/ResourcesCache/raw/main/resources/Logo.png"/></div>   
 
 
 ##  Welcome to WPFDevelopers.Avalonia
