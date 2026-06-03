@@ -7,6 +7,7 @@
         <Setter Property="Background" Value="{DynamicResource WD.BaseBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource WD.PrimaryBrush}" />
         <Setter Property="CornerRadius" Value="{DynamicResource WD.CornerRadius}" />
+        <Setter Property="Padding" Value="{DynamicResource WD.Padding}" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Grid ColumnDefinitions="Auto, *, Auto" RowDefinitions="Auto, *, Auto">
