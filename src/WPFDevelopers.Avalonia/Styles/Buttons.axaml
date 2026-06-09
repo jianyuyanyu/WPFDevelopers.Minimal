@@ -25,6 +25,9 @@
                 </Border>
             </ControlTemplate>
         </Setter>
+        <Style Selector="^:round /template/ Border#PART_Border">
+            <Setter Property="CornerRadius" Value="999" />
+        </Style>
     </ControlTheme>
 
     <ControlTheme x:Key="wd-primary" TargetType="Button" BasedOn="{StaticResource wd-base}">
