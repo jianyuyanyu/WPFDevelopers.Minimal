@@ -2,7 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:controls="https://github.com/WPFDevelopersOrg/WPFDevelopers.Avalonia"
+        xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers.Avalonia"
         xmlns:local="using:WPFDevelopers.Demo"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
         x:Class="WPFDevelopers.Demo.MainWindow"
@@ -68,9 +68,10 @@
                     <TextBlock Text="Buttons" FontSize="18" FontWeight="SemiBold" />
                     <WrapPanel>
                         <Button Content="Primary" Theme="{StaticResource wd-primary}" Margin="4"/>
+                        <Button Content="Primary" wd:ElementHelper.IsRound="True" Theme="{StaticResource wd-primary}" Margin="4"/>
                         <Button Content="Default" Theme="{StaticResource wd-default}" Margin="4" />
                         <Button Content="Normal" Theme="{StaticResource wd-normal}" Margin="4" />
-                        <Button Content="Success" Theme="{StaticResource wd-success}" Margin="4" controls:Loading.IsShow="True" />
+                        <Button Content="Success" Theme="{StaticResource wd-success}" Margin="4" wd:Loading.IsShow="True" />
                         <Button Content="Warning" Theme="{StaticResource wd-warning}" Margin="4" />
                         <Button Content="Danger" Theme="{StaticResource wd-danger}" Margin="4" />
                         <Button Content="Filled Success" Theme="{StaticResource wd-success-filled}" Margin="4" />
@@ -85,18 +86,18 @@
                 <StackPanel Spacing="12">
                     <TextBlock Text="Icons" FontSize="18" FontWeight="SemiBold" />
                     <WrapPanel>
-                        <controls:PathIconEx Kind="Home" Width="24" Height="24" Foreground="{DynamicResource WD.PrimaryBrush}" Margin="4" />
-                        <controls:PathIconEx Kind="CheckMark" Width="24" Height="24" Foreground="{DynamicResource WD.SuccessBrush}" Margin="4" />
-                        <controls:PathIconEx Kind="Warning" Width="24" Height="24" Foreground="{DynamicResource WD.WarningBrush}" Margin="4" />
-                        <controls:PathIconEx Kind="Error" Width="24" Height="24" Foreground="{DynamicResource WD.DangerBrush}" Margin="4" />
-                        <controls:PathIconEx Kind="Info" Width="24" Height="24" Foreground="{DynamicResource WD.PrimaryBrush}" Margin="4" />
-                        <controls:PathIconEx Kind="Star" Width="24" Height="24" Foreground="{DynamicResource WD.WarningBrush}" Margin="4" />
-                        <controls:PathIconEx Kind="Add" Width="24" Height="24" Foreground="{DynamicResource WD.PrimaryBrush}" Margin="4" />
-                        <controls:PathIconEx Kind="Time" Width="24" Height="24" Foreground="{DynamicResource WD.RegularTextBrush}" Margin="4" />
-                        <controls:PathIconEx Kind="DatePicker" Width="24" Height="24" Foreground="{DynamicResource WD.RegularTextBrush}" Margin="4" />
-                        <controls:PathIconEx Kind="Copy" Width="24" Height="24" Foreground="{DynamicResource WD.RegularTextBrush}" Margin="4" />
-                        <controls:PathIconEx Kind="Undo" Width="24" Height="24" Foreground="{DynamicResource WD.RegularTextBrush}" Margin="4" />
-                        <controls:PathIconEx Kind="Filter" Width="24" Height="24" Foreground="{DynamicResource WD.RegularTextBrush}" Margin="4" />
+                        <wd:PathIconEx Kind="Home" Width="24" Height="24" Foreground="{DynamicResource WD.PrimaryBrush}" Margin="4" />
+                        <wd:PathIconEx Kind="CheckMark" Width="24" Height="24" Foreground="{DynamicResource WD.SuccessBrush}" Margin="4" />
+                        <wd:PathIconEx Kind="Warning" Width="24" Height="24" Foreground="{DynamicResource WD.WarningBrush}" Margin="4" />
+                        <wd:PathIconEx Kind="Error" Width="24" Height="24" Foreground="{DynamicResource WD.DangerBrush}" Margin="4" />
+                        <wd:PathIconEx Kind="Info" Width="24" Height="24" Foreground="{DynamicResource WD.PrimaryBrush}" Margin="4" />
+                        <wd:PathIconEx Kind="Star" Width="24" Height="24" Foreground="{DynamicResource WD.WarningBrush}" Margin="4" />
+                        <wd:PathIconEx Kind="Add" Width="24" Height="24" Foreground="{DynamicResource WD.PrimaryBrush}" Margin="4" />
+                        <wd:PathIconEx Kind="Time" Width="24" Height="24" Foreground="{DynamicResource WD.RegularTextBrush}" Margin="4" />
+                        <wd:PathIconEx Kind="DatePicker" Width="24" Height="24" Foreground="{DynamicResource WD.RegularTextBrush}" Margin="4" />
+                        <wd:PathIconEx Kind="Copy" Width="24" Height="24" Foreground="{DynamicResource WD.RegularTextBrush}" Margin="4" />
+                        <wd:PathIconEx Kind="Undo" Width="24" Height="24" Foreground="{DynamicResource WD.RegularTextBrush}" Margin="4" />
+                        <wd:PathIconEx Kind="Filter" Width="24" Height="24" Foreground="{DynamicResource WD.RegularTextBrush}" Margin="4" />
                         <PathIcon Data="{StaticResource WD.CheckMarkGeometry}" Foreground="{DynamicResource WD.SuccessBrush}" Width="24" Height="24" Margin="4" />
                     </WrapPanel>
                 </StackPanel>
@@ -134,8 +135,8 @@
                 <StackPanel Spacing="12">
                     <TextBlock Text="Tags" FontSize="18" FontWeight="SemiBold" />
                     <WrapPanel>
-                        <controls:Tag Content="Default Tag" Margin="4" Close="Tag_Close" />
-                        <controls:Tag Content="Non-closable" IsClose="False" Margin="4" />
+                        <wd:Tag Content="Default Tag" Margin="4" Close="Tag_Close" />
+                        <wd:Tag Content="Non-closable" IsClose="False" Margin="4" />
                     </WrapPanel>
                 </StackPanel>
             </Border>
@@ -149,7 +150,7 @@
                                HorizontalContentAlignment="Center"
                                Background="{StaticResource WD.DangerBrush}"
                                Width="100" Height="100"
-                               controls:Mask.IsShow="True"/>
+                               wd:Mask.IsShow="True"/>
                     </StackPanel>
                 </StackPanel>
             </Border>
@@ -163,7 +164,7 @@
                                HorizontalContentAlignment="Center"
                                Background="{StaticResource WD.PrimaryBrush}"
                                Width="100" Height="100"
-                               controls:Loading.IsShow="True"/>
+                               wd:Loading.IsShow="True"/>
                     </StackPanel>
                 </StackPanel>
             </Border>
@@ -173,9 +174,9 @@
                 <StackPanel Spacing="12">
                     <TextBlock Text="Badge" FontSize="18" FontWeight="SemiBold" />
                     <WrapPanel>
-                        <Button controls:Badge.BadgeText="5" Content="Messages" Theme="{StaticResource wd-default}" Margin="16" />
-                        <Button controls:Badge.BadgeText="99+" Content="Notifications" Theme="{StaticResource wd-default}" Margin="16" />
-                        <Button controls:Badge.IsDot="True" Content="Dot Badge" Theme="{StaticResource wd-default}" Margin="16" />
+                        <Button wd:Badge.BadgeText="5" Content="Messages" Theme="{StaticResource wd-default}" Margin="16" />
+                        <Button wd:Badge.BadgeText="99+" Content="Notifications" Theme="{StaticResource wd-default}" Margin="16" />
+                        <Button wd:Badge.IsDot="True" Content="Dot Badge" Theme="{StaticResource wd-default}" Margin="16" />
                     </WrapPanel>
                 </StackPanel>
             </Border>
@@ -264,14 +265,21 @@
                 </StackPanel>
             </Border>
 
-            <!-- DatePicker Section -->
+            <!-- Date & Time Section -->
             <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
                 <StackPanel Spacing="12">
-                    <TextBlock Text="DatePicker" FontSize="18" FontWeight="SemiBold" />
-                    <StackPanel Orientation="Horizontal" Spacing="16">
-                        <DatePicker Width="200" HorizontalAlignment="Left" />
-                        <Calendar />
-                        <CalendarDatePicker Width="200"/>
+                    <TextBlock Text="Date &amp; Time" FontSize="18" FontWeight="SemiBold" />
+                    <StackPanel Spacing="12">
+                        <StackPanel Orientation="Horizontal" Spacing="16">
+                            <DatePicker Width="200" HorizontalAlignment="Left" />
+                            <Calendar />
+                            <CalendarDatePicker Width="200"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Spacing="16">
+                            <TimePicker Width="200" HorizontalAlignment="Left" />
+                            <TimePicker Width="200" HorizontalAlignment="Left" UseSeconds="True"/>
+                            <TimePicker Width="200" HorizontalAlignment="Left" ClockIdentifier="12HourClock"/>
+                        </StackPanel>
                     </StackPanel>
                 </StackPanel>
             </Border>
@@ -360,7 +368,9 @@
                     <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
                         <RepeatButton Content="-" Name="RepeatDecrementBtn" Width="40" Height="40" FontSize="18" />
                         <TextBlock Name="RepeatValueText" Text="0" VerticalAlignment="Center" FontSize="18" Width="40" TextAlignment="Center" />
-                        <RepeatButton Content="+" Name="RepeatIncrementBtn" Width="40" Height="40" FontSize="18" />
+                        <RepeatButton Name="RepeatIncrementBtn" Width="40" Height="40" FontSize="18" >
+                            <wd:PathIconEx Kind="Add" />
+                        </RepeatButton>
                     </StackPanel>
                 </StackPanel>
             </Border>
@@ -389,21 +399,13 @@
                 </StackPanel>
             </Border>
 
-            <!-- NumericUpDown & TimePicker Section -->
+            <!-- NumericUpDown Section -->
             <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
                 <StackPanel Spacing="12">
-                    <TextBlock Text="NumericUpDown &amp; TimePicker" FontSize="18" FontWeight="SemiBold" />
-                    <StackPanel Orientation="Horizontal" Spacing="24">
-                        <StackPanel Spacing="4">
-                            <Label Content="NumericUpDown" />
-                            <NumericUpDown Width="200" HorizontalAlignment="Left" Value="42" Minimum="0" Maximum="1000" />
-                        </StackPanel>
-                        <StackPanel Spacing="4">
-                            <Label Content="TimePicker" />
-                            <TimePicker Width="200" HorizontalAlignment="Left" />
-                            <TimePicker Width="200" HorizontalAlignment="Left" UseSeconds="True"/>
-                            <TimePicker Width="200" HorizontalAlignment="Left" ClockIdentifier="12HourClock"/>
-                        </StackPanel>
+                    <TextBlock Text="NumericUpDown" FontSize="18" FontWeight="SemiBold" />
+                    <StackPanel Spacing="4">
+                        <Label Content="NumericUpDown" />
+                        <NumericUpDown Width="200" HorizontalAlignment="Left" Value="42" Minimum="0" Maximum="1000" />
                     </StackPanel>
                 </StackPanel>
             </Border>
@@ -491,7 +493,7 @@
                     </WrapPanel>
                 </StackPanel>
             </Border>
-            
+
         </StackPanel>
     </ScrollViewer>
 </Window>
