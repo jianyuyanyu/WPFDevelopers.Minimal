@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[![nuget-version](https://img.shields.io/nuget/v/WPFDevelopers.svg?color=red)](https://www.nuget.org/packages/WPFDevelopers.Avalonia/) [![Github stars](https://img.shields.io/github/stars/WPFDevelopersOrg/WPFDevelopers.Avalonia)](https://github.com/WPFDevelopersOrg/WPFDevelopers.Avalonia/stargazers) ![Downloads](https://img.shields.io/nuget/dt/WPFDevelopers.Avalonia?color=%23409EF)
+[![nuget-version](https://img.shields.io/nuget/v/WPFDevelopers.Avalonia.svg?color=red)](https://www.nuget.org/packages/WPFDevelopers.Avalonia/) [![Github stars](https://img.shields.io/github/stars/WPFDevelopersOrg/WPFDevelopers.Avalonia)](https://github.com/WPFDevelopersOrg/WPFDevelopers.Avalonia/stargazers) ![Downloads](https://img.shields.io/nuget/dt/WPFDevelopers.Avalonia?color=%23409EF)
 
 </div>
 
