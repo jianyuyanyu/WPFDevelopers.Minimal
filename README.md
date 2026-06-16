@@ -102,8 +102,8 @@ dotnet add package WPFDevelopers.Avalonia
 <ToggleButton Content="Toggle Off" />
 <ToggleButton Content="Toggle On" IsChecked="True" />
 <!-- Switch 样式 -->
-<ToggleButton Classes="wd-switch" IsChecked="True" />
-<ToggleButton Classes="wd-switch" />
+<ToggleButton Theme="{StaticResource wd-switch}" IsChecked="True" />
+<ToggleButton Theme="{StaticResource wd-switch}" />
 ```
 
 ### Tag（标签）
