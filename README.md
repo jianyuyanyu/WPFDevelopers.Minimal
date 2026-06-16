@@ -106,6 +106,24 @@ dotnet add package WPFDevelopers.Avalonia
 <ToggleButton Theme="{StaticResource wd-switch}" />
 ```
 
+### GroupBox（分组框）
+
+```xml
+<wd:GroupBox Header="Group Title" Width="500">
+    <TextBlock Text="This is the content of the GroupBox." Margin="4" />
+</wd:GroupBox>
+<!-- 支持任意 Header 内容 -->
+<wd:GroupBox Width="500">
+    <wd:GroupBox.Header>
+        <StackPanel Orientation="Horizontal" Spacing="8">
+            <wd:PathIconEx Kind="Home" Width="16" Height="16" />
+            <TextBlock Text="Header with Icon" />
+        </StackPanel>
+    </wd:GroupBox.Header>
+    <TextBlock Text="Content here" Margin="4" />
+</wd:GroupBox>
+```
+
 ### Tag（标签）
 
 ```xml
