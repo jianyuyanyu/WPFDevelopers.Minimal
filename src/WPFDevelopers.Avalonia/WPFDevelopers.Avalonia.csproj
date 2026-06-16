@@ -1,0 +1,73 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<RootNamespace>WPFDevelopers.Avalonia</RootNamespace>
+		<AssemblyName>WPFDevelopers.Avalonia</AssemblyName>
+		<Copyright>Copyright © WPFDevelopersOrg 2026</Copyright>
+		<AssemblyVersion>11.3.0</AssemblyVersion>
+		<FileVersion>11.3.0</FileVersion>
+		<Version>11.3.0</Version>
+		<RepositoryUrl>https://github.com/WPFDevelopersOrg/WPFDevelopers.Avalonia</RepositoryUrl>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Avalonia" Version="11.3.0" />
+		<PackageReference Include="Avalonia.Controls.DataGrid" Version="11.3.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<AvaloniaResource Include="Themes\**\*.axaml" />
+		<AvaloniaResource Include="Styles\**\*.axaml" />
+		<AvaloniaResource Include="Controls\**\*.axaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <AvaloniaXaml Remove="Styles\UserControl.axaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="**\*.axaml.cs">
+			<DependentUpon>%(Filename)</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<AssemblyAttribute Include="Avalonia.Metadata.XmlnsDefinitionAttribute">
+			<_Parameter1>https://github.com/WPFDevelopersOrg/WPFDevelopers.Avalonia</_Parameter1>
+			<_Parameter2>WPFDevelopers.Avalonia</_Parameter2>
+		</AssemblyAttribute>
+		<AssemblyAttribute Include="Avalonia.Metadata.XmlnsDefinitionAttribute">
+			<_Parameter1>https://github.com/WPFDevelopersOrg/WPFDevelopers.Avalonia</_Parameter1>
+			<_Parameter2>WPFDevelopers.Avalonia.Controls</_Parameter2>
+		</AssemblyAttribute>
+		<AssemblyAttribute Include="Avalonia.Metadata.XmlnsDefinitionAttribute">
+			<_Parameter1>https://github.com/WPFDevelopersOrg/WPFDevelopers.Avalonia</_Parameter1>
+			<_Parameter2>WPFDevelopers.Avalonia.Converts</_Parameter2>
+		</AssemblyAttribute>
+		<AssemblyAttribute Include="Avalonia.Metadata.XmlnsDefinitionAttribute">
+			<_Parameter1>https://github.com/WPFDevelopersOrg/WPFDevelopers.Avalonia</_Parameter1>
+			<_Parameter2>WPFDevelopers.Avalonia.Converters</_Parameter2>
+		</AssemblyAttribute>
+		<AssemblyAttribute Include="Avalonia.Metadata.XmlnsDefinitionAttribute">
+			<_Parameter1>https://github.com/WPFDevelopersOrg/WPFDevelopers.Avalonia</_Parameter1>
+			<_Parameter2>WPFDevelopers.Avalonia.Themes</_Parameter2>
+		</AssemblyAttribute>
+		<AssemblyAttribute Include="Avalonia.Metadata.XmlnsDefinitionAttribute">
+			<_Parameter1>https://github.com/WPFDevelopersOrg/WPFDevelopers.Avalonia</_Parameter1>
+			<_Parameter2>WPFDevelopers.Avalonia.Helpers</_Parameter2>
+		</AssemblyAttribute>
+		<AssemblyAttribute Include="Avalonia.Metadata.XmlnsDefinitionAttribute">
+			<_Parameter1>https://github.com/WPFDevelopersOrg/WPFDevelopers.Avalonia</_Parameter1>
+			<_Parameter2>WPFDevelopers.Avalonia.Markup</_Parameter2>
+		</AssemblyAttribute>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <AvaloniaResource Update="Styles\UserControl.axaml">
+	    <SubType>Designer</SubType>
+	  </AvaloniaResource>
+	</ItemGroup>
+</Project>
