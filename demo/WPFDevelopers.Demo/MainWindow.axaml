@@ -361,6 +361,14 @@
                 </StackPanel>
             </Border>
 
+            <!-- GroupBox Section -->
+            <StackPanel Spacing="12">
+                <TextBlock Text="GroupBox" FontSize="18" FontWeight="SemiBold" />
+                <wd:GroupBox Header="Group Title" Width="500" HorizontalAlignment="Left">
+                    <TextBlock Text="This is the content of the GroupBox." Margin="4" />
+                </wd:GroupBox>
+            </StackPanel>
+
             <!-- RepeatButton Section -->
             <Border BorderBrush="{DynamicResource WD.BaseBrush}" BorderThickness="1" CornerRadius="8" Padding="16">
                 <StackPanel Spacing="12">
