@@ -376,6 +376,45 @@ dotnet add package WPFDevelopers.Avalonia
 <Button Content="YesNoCancel" Theme="{StaticResource wd-default}" Name="MsgBoxYesNoCancelBtn" />
 ```
 
+### TrayIcon（托盘图标）
+
+```csharp
+// 在 App.OnFrameworkInitializationCompleted 或 Window 构造函数中初始化
+if (Application.Current is { } app)
+{
+    var trayIcons = TrayIcon.GetIcons(app);
+    if (trayIcons == null || trayIcons.Count == 0)
+    {
+        var tray = new TrayIcon
+        {
+            Icon = new WindowIcon(AssetLoader.Open(new Uri("avares://YourApp/Assets/App.ico"))),
+            Menu = new NativeMenu
+            {
+                new NativeMenuItem("Show"),
+                new NativeMenuItemSeparator(),
+                new NativeMenuItem("Exit")
+            }
+        };
+        TrayIcon.SetIcons(app, [tray]);
+    }
+}
+
+// 菜单项点击事件（在 Window 代码中绑定）
+private void TrayShow_Click(object? sender, EventArgs e)
+{
+    Show();
+    WindowState = WindowState.Normal;
+    Activate();
+}
+
+private void TrayExit_Click(object? sender, EventArgs e)
+{
+    Environment.Exit(0);
+}
+```
+
+> 注意：Avalonia 的 `TrayIcon` 不支持 XAML 属性方式设置，需通过 `TrayIcon.SetIcons()` 代码初始化。`Tip` 属性在当前版本不可用。
+
 ---
 
 ## 自定义主题色
