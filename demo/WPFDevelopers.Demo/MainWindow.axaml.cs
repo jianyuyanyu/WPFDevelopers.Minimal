@@ -2,6 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Media;
+using Avalonia.Platform;
 using System.Collections.Generic;
 using WPFDevelopers.Avalonia;
 using WPFDevelopers.Avalonia.Controls;
@@ -15,6 +16,30 @@ namespace WPFDevelopers.Demo
         public MainWindow()
         {
             InitializeComponent();
+
+            if (Application.Current is { } app)
+            {
+                var trayIcons = TrayIcon.GetIcons(app);
+                if (trayIcons == null || trayIcons.Count == 0)
+                {
+                    var showItem = new NativeMenuItem("Show");
+                    var exitItem = new NativeMenuItem("Exit");
+                    showItem.Click += TrayShow_Click;
+                    exitItem.Click += TrayExit_Click;
+
+                    var tray = new TrayIcon
+                    {
+                        Icon = new WindowIcon(AssetLoader.Open(new Uri("avares://WPFDevelopers.Demo/Assets/WPFDevelopers.ico"))),
+                        Menu = new NativeMenu
+                        {
+                            showItem,
+                            exitItem
+                        }
+                    };
+                    TrayIcon.SetIcons(app, [tray]);
+                }
+            }
+
             InitializeColorOptions();
             var themeToggle = this.FindControl<Button>("ThemeToggle");
             if (themeToggle != null)
@@ -150,6 +175,18 @@ namespace WPFDevelopers.Demo
             {
                 ((Resources)Application.Current.Resources).Color = Color.Parse(selectedColor.ColorCode);
             }
+        }
+
+        private void TrayShow_Click(object? sender, EventArgs e)
+        {
+            Show();
+            WindowState = WindowState.Normal;
+            Activate();
+        }
+
+        private void TrayExit_Click(object? sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
 
         
