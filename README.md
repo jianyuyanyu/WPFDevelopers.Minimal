@@ -46,7 +46,7 @@ dotnet add package WPFDevelopers.Avalonia
 ```xml
 <WrapPanel>
     <!-- 主要按钮 -->
-    <Button Content="Primary" Theme="{StaticResource wd-primary}" />
+    <Button Content="Primary"  />
     <!-- 圆形按钮 -->
     <Button Content="Primary" wd:ElementHelper.IsRound="True" Theme="{StaticResource wd-primary}" />
     <!-- 默认描边按钮 -->
