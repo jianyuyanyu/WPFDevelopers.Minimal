@@ -14,7 +14,7 @@
     Icon="avares://WPFDevelopers.Demo/Assets/WPFDevelopers.ico"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
-    
+
     <ScrollViewer Margin="2">
         <StackPanel Spacing="20">
 
@@ -96,10 +96,7 @@
                         FontWeight="SemiBold"
                         Text="Buttons" />
                     <WrapPanel>
-                        <Button
-                            Margin="4"
-                            Content="Primary"
-                            Theme="{StaticResource wd-primary}" />
+                        <Button Margin="4" Content="Primary" />
                         <Button
                             Width="40"
                             Height="40"
